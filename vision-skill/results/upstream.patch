@@ -1,0 +1,19 @@
+--- upstream/src/task_carry_clothes.py
++++ patched/task_carry_clothes.py
+@@ -118,6 +118,7 @@
+     release_hold_s: float = 1.2
+ 
+     # --- 搜索 ---
++    washer_confidence: float = 0.5          # Configurable score gate; keep upstream default
+     scan_yaw_speed: float = 0.35               # rad/s，找不到目标时原地扫描
+     scan_max_s: float = 25.0
+     approach_timeout_s: float = 60.0
+@@ -381,7 +382,7 @@
+             if image:
+                 dets = self.detector.detect(image)
+                 if any(d.label in ("washing_machine", "washer", "洗衣机")
+-                       and d.confidence >= 0.5 for d in dets):
++                       and d.confidence >= self.cfg.washer_confidence for d in dets):
+                     found = True
+                     break
+             # 原地慢转继续搜

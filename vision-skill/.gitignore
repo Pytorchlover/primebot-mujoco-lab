@@ -1,0 +1,6 @@
+.venv/
+model/
+upstream/
+patched/
+__pycache__/
+*.pyc

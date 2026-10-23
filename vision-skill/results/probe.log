@@ -1,0 +1,10 @@
+/home/wjzh5070ti/primebot-vision-skill/.venv/lib/python3.11/site-packages/transformers/models/owlvit/processing_owlvit.py:233: FutureWarning: `post_process_object_detection` method is deprecated for OwlVitProcessor and will be removed in v5. Use `post_process_grounded_object_detection` instead.
+  warnings.warn(
+{'file': 'laundry_normal.jpg', 'score': 0.7571463584899902, 'box': [48.1391716003418, 310.2688293457031, 600.4949340820312, 850.9229736328125], 'width': 720, 'height': 960, 'latency_ms': 35.840434953570366}
+{'file': 'washer_normal.jpg', 'score': 0.6794607639312744, 'box': [81.1694564819336, 24.65572738647461, 533.7785034179688, 606.360107421875], 'width': 600, 'height': 684, 'latency_ms': 34.904302097857}
+{'file': 'laundry_dark.jpg', 'score': 0.696675717830658, 'box': [51.60615158081055, 307.0655212402344, 623.7565307617188, 846.4968872070312], 'width': 720, 'height': 960, 'latency_ms': 37.43184730410576}
+{'file': 'washer_dark.jpg', 'score': 0.7197046279907227, 'box': [89.79855346679688, 34.57282638549805, 538.1984252929688, 607.4188232421875], 'width': 600, 'height': 684, 'latency_ms': 34.75651890039444}
+{'file': 'laundry_occluded.jpg', 'score': 0.1669822484254837, 'box': [0.0, 131.90245056152344, 717.752197265625, 843.6062622070312], 'width': 720, 'height': 960, 'latency_ms': 36.35161789134145}
+{'file': 'washer_occluded.jpg', 'score': 0.24031177163124084, 'box': [93.96266174316406, 79.61589050292969, 523.8429565429688, 259.0004577636719], 'width': 600, 'height': 684, 'latency_ms': 34.96774518862367}
+{'file': 'no_washer.png', 'score': 0.01486244797706604, 'box': [416.0691223144531, 134.26480102539062, 571.4700317382812, 479.2198486328125], 'width': 960, 'height': 540, 'latency_ms': 36.44326375797391}
+{'file': 'blank.jpg', 'score': 0.0011626729974523187, 'box': [0.0, 11.769590377807617, 607.5872802734375, 464.1413269042969], 'width': 640, 'height': 480, 'latency_ms': 33.24299305677414}

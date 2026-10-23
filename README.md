@@ -65,3 +65,7 @@ MUJOCO_GL=egl .venv/bin/python code/collect_multiview.py
 双击 `multiview/viewer.html` 可查看本地数据，或在仓库根目录运行 `python3 -m http.server 8769` 后打开 `http://localhost:8769/multiview/viewer.html`。支持切换 episode、播放、滑动帧号、方向键逐帧查看；渲染图片依赖完整 `multiview/` 目录。
 
 这是采集与格式检查样例，模型使用固定骨盆、关闭机器人碰撞的测试台，保留重力；并非通用任务训练集。
+
+## 启元 Skill 本地视觉接入
+
+新增 [vision-skill](vision-skill/)：在 RTX 5070 Ti 上实际运行 OWL-ViT，接入 carry-clothes 的洗衣机搜索阶段，包含遮挡反例、六组 Mock 分支测试、独立的异步推理与观测过期实验。代码、图片授权和复现步骤见该目录。
