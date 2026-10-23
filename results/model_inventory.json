@@ -1,0 +1,58 @@
+[
+  {
+    "file": "sources/q1-urdf/xml/q1_v3.xml",
+    "nq": 29,
+    "nv": 28,
+    "nu": 0,
+    "dt": 0.002,
+    "time": 0.20000000000000015
+  },
+  {
+    "file": "sources/q1-urdf/xml/q1_v3_full_range.xml",
+    "nq": 29,
+    "nv": 28,
+    "nu": 0,
+    "dt": 0.002,
+    "time": 0.20000000000000015
+  },
+  {
+    "file": "sources/q1-urdf/xml/q1_v3_mc.xml",
+    "nq": 29,
+    "nv": 28,
+    "nu": 22,
+    "dt": 0.001,
+    "time": 0.10000000000000007
+  },
+  {
+    "file": "sources/t1-urdf/xml/T1-V2.xml",
+    "nq": 21,
+    "nv": 20,
+    "nu": 14,
+    "dt": 0.002,
+    "time": 0.20000000000000015
+  },
+  {
+    "file": "sources/t1-urdf/xml/T1-V2mesh.xml",
+    "nq": 21,
+    "nv": 20,
+    "nu": 14,
+    "dt": 0.002,
+    "time": 0.20000000000000015
+  },
+  {
+    "file": "sources/t1-urdf/xml/scene_plane.xml",
+    "nq": 21,
+    "nv": 20,
+    "nu": 14,
+    "dt": 0.002,
+    "time": 0.20000000000000015
+  },
+  {
+    "file": "sources/t1-urdf/xml/scene_terrain.xml",
+    "nq": 21,
+    "nv": 20,
+    "nu": 14,
+    "dt": 0.002,
+    "time": 0.20000000000000015
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "instruction": "Move the left shoulder periodically (scripted test)",
+  "policy": "analytic sine trajectory, NOT a VLA",
+  "image_shape": [
+    180,
+    320,
+    3
+  ],
+  "image": "external fixed camera, RGB uint8, before action",
+  "state": "actuated joint position at t, rad",
+  "action": "absolute joint target applied during [t,t+0.05), rad",
+  "next_state": "joint position after 50 physics steps",
+  "joint_names": [
+    "left_hip_pitch_joint",
+    "left_hip_roll_joint",
+    "left_hip_yaw_joint",
+    "left_knee_joint",
+    "left_ankle_pitch_joint",
+    "left_ankle_roll_joint",
+    "right_hip_pitch_joint",
+    "right_hip_roll_joint",
+    "right_hip_yaw_joint",
+    "right_knee_joint",
+    "right_ankle_pitch_joint",
+    "right_ankle_roll_joint",
+    "waist_roll_joint",
+    "waist_yaw_joint",
+    "left_shoulder_pitch_joint",
+    "left_shoulder_roll_joint",
+    "left_shoulder_yaw_joint",
+    "left_elbow_joint",
+    "right_shoulder_pitch_joint",
+    "right_shoulder_roll_joint",
+    "right_shoulder_yaw_joint",
+    "right_elbow_joint"
+  ],
+  "control_hz": 20,
+  "physics_hz": 1000,
+  "chunk_horizon": 10,
+  "base": "fixed, pelvis z=0.55m; robot collisions disabled; gravity enabled",
+  "delta_convention": "all H actions relative to the same chunk-start observed state"
+}

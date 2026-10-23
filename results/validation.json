@@ -1,0 +1,8 @@
+{
+  "checks": "PASS",
+  "episode_samples": 120,
+  "physics_steps": 6000,
+  "replay_max_abs_error_rad": 0.0,
+  "H1_negative_control": "all three decoders identical",
+  "experiment_runs": 19
+}
