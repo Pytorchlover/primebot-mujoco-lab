@@ -1,0 +1,9 @@
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:02<00:05,  2.88s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:06<00:03,  3.26s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:06<00:00,  1.82s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:06<00:00,  2.17s/it]
+wave error 1.33  {'type': 'ValueError', 'message': '未知平台工具'}
+welcome error 2.86  {'type': 'JSONDecodeError', 'message': "Expecting ',' delimiter: line 1 column 400 (char 399)"}
+heart error 2.07  {'type': 'ValueError', 'message': '执行前须读取技能 SKILL.md。'}
+ambiguous complete 0.64 好的，我将为您执行一个动作。请问您想要机器人跳一段舞、挥手或比心，还是进行问候？ None
+unsupported complete 0.5 我需要先确认厨房的位置和倒水的具体步骤。您能告诉我厨房的位置吗？ None
+failure error 2.02  {'type': 'ValueError', 'message': '执行前须读取技能 SKILL.md。'}
+cancel error 2.1  {'type': 'ValueError', 'message': '执行前须读取技能 SKILL.md。'}
+/home/wjzh5070ti/primebot-local-scheduler/results/suite.json

@@ -1,0 +1,6 @@
+{"t": 2716689.806058626, "action": "gesture.heart", "args": {"name": "heart"}, "state": "start"}
+{"t": 2716690.069024229, "action": "gesture.heart", "args": {"name": "heart"}, "state": "success"}
+{"t": 2716690.069134862, "action": "gesture.heart", "args": {"name": "heart"}, "state": "released"}
+{"t": 2716690.246781361, "action": "dance.perform", "args": {"seconds": 2}, "state": "start"}
+{"t": 2716692.261850648, "action": "dance.perform", "args": {"seconds": 2}, "state": "success"}
+{"t": 2716692.261938911, "action": "dance.perform", "args": {"seconds": 2}, "state": "released"}

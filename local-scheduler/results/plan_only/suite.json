@@ -1,0 +1,3116 @@
+{
+  "cases": [
+    {
+      "id": "wave",
+      "text": "跟门口的客人挥挥手。",
+      "outcome": "complete",
+      "final": "gesture.perform：模拟完成。",
+      "error": null,
+      "cancel_sent": false,
+      "elapsed_s": 4.92127270065248,
+      "batches": [
+        {
+          "tasks": [
+            {
+              "id": "t1",
+              "skill": "gesture",
+              "action": "perform",
+              "args": {
+                "name": "wave"
+              },
+              "after": []
+            }
+          ],
+          "results": {
+            "t1": {
+              "status": "success",
+              "message": "Mock gesture.wave 已完成；参数 {'name': 'wave'}。",
+              "simulated": true
+            }
+          }
+        }
+      ],
+      "engine_events": [
+        {
+          "t": 4.575962888542563,
+          "id": "t1",
+          "state": "running"
+        },
+        {
+          "t": 4.921179608907551,
+          "id": "t1",
+          "state": "success"
+        }
+      ],
+      "announcements": [
+        "明白，正在执行gesture",
+        "Mock gesture.wave 已完成；参数 {'name': 'wave'}。"
+      ],
+      "backend_events": [
+        {
+          "t": 2716419.923321625,
+          "action": "gesture.wave",
+          "args": {
+            "name": "wave"
+          },
+          "state": "start"
+        },
+        {
+          "t": 2716420.187455687,
+          "action": "gesture.wave",
+          "args": {
+            "name": "wave"
+          },
+          "state": "success"
+        },
+        {
+          "t": 2716420.187524824,
+          "action": "gesture.wave",
+          "args": {
+            "name": "wave"
+          },
+          "state": "released"
+        }
+      ],
+      "model_calls": [
+        {
+          "input_tokens": 556,
+          "output_tokens": 74,
+          "generation_s": 2.145491483155638,
+          "raw": "{\n  \"tasks\": [\n    {\n      \"id\": \"t1\",\n      \"skill\": \"gesture\",\n      \"action\": \"perform\",\n      \"args\": {\n        \"name\": \"wave\"\n      },\n      \"after\": []\n    }\n  ]\n  \n  ,\n  \"reply\": \"已为您安排机器人向门口的客人挥手。\"\n}",
+          "messages": [
+            {
+              "role": "system",
+              "content": "你是机器人任务规划器。输出一个JSON计划，不执行动作。只使用已安装技能。\n任务格式为id、skill、action、args、after。id用t1、t2等。先A后B：A的after=[]，B的after=[A的id]。\n同一robot.body资源不能并行。即使用户没有强调顺序，多个身体动作也要排好先后。\n可执行请求：reply为空，tasks列出任务。含糊请求：tasks=[]，reply简短追问。\n请求目录外能力：tasks=[]，reply说明当前不支持；不要询问该能力的细节。\n下面是程序加载的全部技能说明与精确动作定义。不得编造其他能力：\n[{\"skill\": \"dance\", \"instructions\": \"---\\nname: dance\\ndescription: 机器人跳一小段舞；持续时间可选 1、2 或 3 秒。\\n---\\n\\n# dance\\n\\nperform(seconds) 支持整数 1、2、3。没有指定时取 2 秒。跳舞占用 robot.body；先挥手再跳舞时，跳舞任务必须依赖挥手任务。这里只执行 Mock，不支持其他运动技能。\\n\", \"actions\": {\"perform\": {\"parameters\": {\"seconds\": {\"type\": \"integer\", \"enum\": [1, 2, 3], \"default\": 2}}, \"resources\": [\"robot.body\"]}}}, {\"skill\": \"gesture\", \"instructions\": \"---\\nname: gesture\\ndescription: 机器人挥手或比心；不包含跳舞。\\n---\\n\\n# gesture\\n\\nperform(name) 支持 wave（挥手）、heart（比心）。用户明确先后时必须通过 after 声明依赖；同一身体资源不可并发。这里只执行 Mock。\\n\", \"actions\": {\"perform\": {\"parameters\": {\"name\": {\"type\": \"string\", \"enum\": [\"wave\", \"heart\"]}}, \"resources\": [\"robot.body\"]}}}, {\"skill\": \"greeting\", \"instructions\": \"---\\nname: greeting\\ndescription: 向来宾说欢迎词、问好；只负责语言问候。\\n---\\n\\n# greeting\\n\\n使用 say(text) 向来宾问好。text 为不超过 100 字的欢迎词。可以自行组织简短欢迎词，不要追问无关信息。这里只执行 Mock，不输出真实语音。\\n\", \"actions\": {\"say\": {\"parameters\": {\"text\": {\"type\": \"string\"}}, \"resources\": [\"speaker\"]}}}]"
+            },
+            {
+              "role": "user",
+              "content": "跟门口的客人挥挥手。"
+            }
+          ],
+          "schema": {
+            "type": "object",
+            "properties": {
+              "reply": {
+                "type": "string",
+                "maxLength": 200
+              },
+              "tasks": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "dance"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "perform"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "seconds": {
+                              "type": "integer",
+                              "enum": [
+                                1,
+                                2,
+                                3
+                              ],
+                              "default": 2
+                            }
+                          },
+                          "required": [
+                            "seconds"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "gesture"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "perform"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "wave",
+                                "heart"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "greeting"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "say"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "text"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "maxItems": 8
+              }
+            },
+            "required": [
+              "reply",
+              "tasks"
+            ],
+            "additionalProperties": false
+          },
+          "catalog": [
+            {
+              "skill": "dance",
+              "instructions": "---\nname: dance\ndescription: 机器人跳一小段舞；持续时间可选 1、2 或 3 秒。\n---\n\n# dance\n\nperform(seconds) 支持整数 1、2、3。没有指定时取 2 秒。跳舞占用 robot.body；先挥手再跳舞时，跳舞任务必须依赖挥手任务。这里只执行 Mock，不支持其他运动技能。\n",
+              "actions": {
+                "perform": {
+                  "parameters": {
+                    "seconds": {
+                      "type": "integer",
+                      "enum": [
+                        1,
+                        2,
+                        3
+                      ],
+                      "default": 2
+                    }
+                  },
+                  "resources": [
+                    "robot.body"
+                  ]
+                }
+              }
+            },
+            {
+              "skill": "gesture",
+              "instructions": "---\nname: gesture\ndescription: 机器人挥手或比心；不包含跳舞。\n---\n\n# gesture\n\nperform(name) 支持 wave（挥手）、heart（比心）。用户明确先后时必须通过 after 声明依赖；同一身体资源不可并发。这里只执行 Mock。\n",
+              "actions": {
+                "perform": {
+                  "parameters": {
+                    "name": {
+                      "type": "string",
+                      "enum": [
+                        "wave",
+                        "heart"
+                      ]
+                    }
+                  },
+                  "resources": [
+                    "robot.body"
+                  ]
+                }
+              }
+            },
+            {
+              "skill": "greeting",
+              "instructions": "---\nname: greeting\ndescription: 向来宾说欢迎词、问好；只负责语言问候。\n---\n\n# greeting\n\n使用 say(text) 向来宾问好。text 为不超过 100 字的欢迎词。可以自行组织简短欢迎词，不要追问无关信息。这里只执行 Mock，不输出真实语音。\n",
+              "actions": {
+                "say": {
+                  "parameters": {
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "resources": [
+                    "speaker"
+                  ]
+                }
+              }
+            }
+          ],
+          "feedback": null,
+          "plan": {
+            "tasks": [
+              {
+                "id": "t1",
+                "skill": "gesture",
+                "action": "perform",
+                "args": {
+                  "name": "wave"
+                },
+                "after": []
+              }
+            ],
+            "reply": "已为您安排机器人向门口的客人挥手。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "welcome",
+      "text": "先说一句欢迎光临，然后挥手，最后跳1秒的舞。",
+      "outcome": "complete",
+      "final": "greeting.say：模拟完成；gesture.perform：模拟完成；dance.perform：模拟完成。",
+      "error": null,
+      "cancel_sent": false,
+      "elapsed_s": 8.524008113890886,
+      "batches": [
+        {
+          "tasks": [
+            {
+              "id": "t1",
+              "skill": "greeting",
+              "action": "say",
+              "args": {
+                "text": "欢迎光临！"
+              },
+              "after": []
+            },
+            {
+              "id": "t2",
+              "skill": "gesture",
+              "action": "perform",
+              "args": {
+                "name": "wave"
+              },
+              "after": [
+                "t1"
+              ]
+            },
+            {
+              "id": "t3",
+              "skill": "dance",
+              "action": "perform",
+              "args": {
+                "seconds": 1
+              },
+              "after": [
+                "t2"
+              ]
+            }
+          ],
+          "results": {
+            "t1": {
+              "status": "success",
+              "message": "Mock greeting.say 已完成；参数 {'text': '欢迎光临！'}。",
+              "simulated": true
+            },
+            "t2": {
+              "status": "success",
+              "message": "Mock gesture.wave 已完成；参数 {'name': 'wave'}。",
+              "simulated": true
+            },
+            "t3": {
+              "status": "success",
+              "message": "Mock dance.perform 已完成；参数 {'seconds': 1}。",
+              "simulated": true
+            }
+          }
+        }
+      ],
+      "engine_events": [
+        {
+          "t": 6.700010062661022,
+          "id": "t1",
+          "state": "running"
+        },
+        {
+          "t": 6.902668913826346,
+          "id": "t1",
+          "state": "success"
+        },
+        {
+          "t": 6.977107377722859,
+          "id": "t2",
+          "state": "running"
+        },
+        {
+          "t": 7.32694653654471,
+          "id": "t2",
+          "state": "success"
+        },
+        {
+          "t": 7.415756497997791,
+          "id": "t3",
+          "state": "running"
+        },
+        {
+          "t": 8.523756089620292,
+          "id": "t3",
+          "state": "success"
+        }
+      ],
+      "announcements": [
+        "好的，正在执行greeting",
+        "Mock greeting.say 已完成；参数 {'text': '欢迎光临！'}。",
+        "明白，正在执行gesture",
+        "Mock gesture.wave 已完成；参数 {'name': 'wave'}。",
+        "明白，正在执行dance",
+        "Mock dance.perform 已完成；参数 {'seconds': 1}。"
+      ],
+      "backend_events": [
+        {
+          "t": 2716426.971841377,
+          "action": "greeting.say",
+          "args": {
+            "text": "欢迎光临！"
+          },
+          "state": "start"
+        },
+        {
+          "t": 2716427.075009073,
+          "action": "greeting.say",
+          "args": {
+            "text": "欢迎光临！"
+          },
+          "state": "success"
+        },
+        {
+          "t": 2716427.075068287,
+          "action": "greeting.say",
+          "args": {
+            "text": "欢迎光临！"
+          },
+          "state": "released"
+        },
+        {
+          "t": 2716427.245927219,
+          "action": "gesture.wave",
+          "args": {
+            "name": "wave"
+          },
+          "state": "start"
+        },
+        {
+          "t": 2716427.507360664,
+          "action": "gesture.wave",
+          "args": {
+            "name": "wave"
+          },
+          "state": "success"
+        },
+        {
+          "t": 2716427.507430641,
+          "action": "gesture.wave",
+          "args": {
+            "name": "wave"
+          },
+          "state": "released"
+        },
+        {
+          "t": 2716427.689560574,
+          "action": "dance.perform",
+          "args": {
+            "seconds": 1
+          },
+          "state": "start"
+        },
+        {
+          "t": 2716428.708503474,
+          "action": "dance.perform",
+          "args": {
+            "seconds": 1
+          },
+          "state": "success"
+        },
+        {
+          "t": 2716428.708562739,
+          "action": "dance.perform",
+          "args": {
+            "seconds": 1
+          },
+          "state": "released"
+        }
+      ],
+      "model_calls": [
+        {
+          "input_tokens": 566,
+          "output_tokens": 166,
+          "generation_s": 3.776171339675784,
+          "raw": "{\n  \"tasks\": [\n    {\n      \"id\": \"t1\",\n      \"skill\": \"greeting\",\n      \"action\": \"say\",\n      \"args\": {\n        \"text\": \"欢迎光临！\"\n      },\n      \"after\": []\n    },\n    {\n      \"id\": \"t2\",\n      \"skill\": \"gesture\",\n      \"action\": \"perform\",\n      \"args\": {\n        \"name\": \"wave\"\n      },\n      \"after\": [\"t1\"]\n    },\n    {\n      \"id\": \"t3\",\n      \"skill\": \"dance\",\n      \"action\": \"perform\",\n      \"args\": {\n        \"seconds\": 1\n      },\n      \"after\": [\"t2\"]\n    }\n  ]\n  \n  \t   \n ,\n  \"reply\": \"\"\n}",
+          "messages": [
+            {
+              "role": "system",
+              "content": "你是机器人任务规划器。输出一个JSON计划，不执行动作。只使用已安装技能。\n任务格式为id、skill、action、args、after。id用t1、t2等。先A后B：A的after=[]，B的after=[A的id]。\n同一robot.body资源不能并行。即使用户没有强调顺序，多个身体动作也要排好先后。\n可执行请求：reply为空，tasks列出任务。含糊请求：tasks=[]，reply简短追问。\n请求目录外能力：tasks=[]，reply说明当前不支持；不要询问该能力的细节。\n下面是程序加载的全部技能说明与精确动作定义。不得编造其他能力：\n[{\"skill\": \"dance\", \"instructions\": \"---\\nname: dance\\ndescription: 机器人跳一小段舞；持续时间可选 1、2 或 3 秒。\\n---\\n\\n# dance\\n\\nperform(seconds) 支持整数 1、2、3。没有指定时取 2 秒。跳舞占用 robot.body；先挥手再跳舞时，跳舞任务必须依赖挥手任务。这里只执行 Mock，不支持其他运动技能。\\n\", \"actions\": {\"perform\": {\"parameters\": {\"seconds\": {\"type\": \"integer\", \"enum\": [1, 2, 3], \"default\": 2}}, \"resources\": [\"robot.body\"]}}}, {\"skill\": \"gesture\", \"instructions\": \"---\\nname: gesture\\ndescription: 机器人挥手或比心；不包含跳舞。\\n---\\n\\n# gesture\\n\\nperform(name) 支持 wave（挥手）、heart（比心）。用户明确先后时必须通过 after 声明依赖；同一身体资源不可并发。这里只执行 Mock。\\n\", \"actions\": {\"perform\": {\"parameters\": {\"name\": {\"type\": \"string\", \"enum\": [\"wave\", \"heart\"]}}, \"resources\": [\"robot.body\"]}}}, {\"skill\": \"greeting\", \"instructions\": \"---\\nname: greeting\\ndescription: 向来宾说欢迎词、问好；只负责语言问候。\\n---\\n\\n# greeting\\n\\n使用 say(text) 向来宾问好。text 为不超过 100 字的欢迎词。可以自行组织简短欢迎词，不要追问无关信息。这里只执行 Mock，不输出真实语音。\\n\", \"actions\": {\"say\": {\"parameters\": {\"text\": {\"type\": \"string\"}}, \"resources\": [\"speaker\"]}}}]"
+            },
+            {
+              "role": "user",
+              "content": "先说一句欢迎光临，然后挥手，最后跳1秒的舞。"
+            }
+          ],
+          "schema": {
+            "type": "object",
+            "properties": {
+              "reply": {
+                "type": "string",
+                "maxLength": 200
+              },
+              "tasks": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "dance"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "perform"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "seconds": {
+                              "type": "integer",
+                              "enum": [
+                                1,
+                                2,
+                                3
+                              ],
+                              "default": 2
+                            }
+                          },
+                          "required": [
+                            "seconds"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "gesture"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "perform"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "wave",
+                                "heart"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "greeting"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "say"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "text"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "maxItems": 8
+              }
+            },
+            "required": [
+              "reply",
+              "tasks"
+            ],
+            "additionalProperties": false
+          },
+          "catalog": [
+            {
+              "skill": "dance",
+              "instructions": "---\nname: dance\ndescription: 机器人跳一小段舞；持续时间可选 1、2 或 3 秒。\n---\n\n# dance\n\nperform(seconds) 支持整数 1、2、3。没有指定时取 2 秒。跳舞占用 robot.body；先挥手再跳舞时，跳舞任务必须依赖挥手任务。这里只执行 Mock，不支持其他运动技能。\n",
+              "actions": {
+                "perform": {
+                  "parameters": {
+                    "seconds": {
+                      "type": "integer",
+                      "enum": [
+                        1,
+                        2,
+                        3
+                      ],
+                      "default": 2
+                    }
+                  },
+                  "resources": [
+                    "robot.body"
+                  ]
+                }
+              }
+            },
+            {
+              "skill": "gesture",
+              "instructions": "---\nname: gesture\ndescription: 机器人挥手或比心；不包含跳舞。\n---\n\n# gesture\n\nperform(name) 支持 wave（挥手）、heart（比心）。用户明确先后时必须通过 after 声明依赖；同一身体资源不可并发。这里只执行 Mock。\n",
+              "actions": {
+                "perform": {
+                  "parameters": {
+                    "name": {
+                      "type": "string",
+                      "enum": [
+                        "wave",
+                        "heart"
+                      ]
+                    }
+                  },
+                  "resources": [
+                    "robot.body"
+                  ]
+                }
+              }
+            },
+            {
+              "skill": "greeting",
+              "instructions": "---\nname: greeting\ndescription: 向来宾说欢迎词、问好；只负责语言问候。\n---\n\n# greeting\n\n使用 say(text) 向来宾问好。text 为不超过 100 字的欢迎词。可以自行组织简短欢迎词，不要追问无关信息。这里只执行 Mock，不输出真实语音。\n",
+              "actions": {
+                "say": {
+                  "parameters": {
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "resources": [
+                    "speaker"
+                  ]
+                }
+              }
+            }
+          ],
+          "feedback": null,
+          "plan": {
+            "tasks": [
+              {
+                "id": "t1",
+                "skill": "greeting",
+                "action": "say",
+                "args": {
+                  "text": "欢迎光临！"
+                },
+                "after": []
+              },
+              {
+                "id": "t2",
+                "skill": "gesture",
+                "action": "perform",
+                "args": {
+                  "name": "wave"
+                },
+                "after": [
+                  "t1"
+                ]
+              },
+              {
+                "id": "t3",
+                "skill": "dance",
+                "action": "perform",
+                "args": {
+                  "seconds": 1
+                },
+                "after": [
+                  "t2"
+                ]
+              }
+            ],
+            "reply": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "heart",
+      "text": "比个心，做完之后再跳两秒舞。",
+      "outcome": "complete",
+      "final": "gesture.perform：模拟完成；dance.perform：模拟完成。",
+      "error": null,
+      "cancel_sent": false,
+      "elapsed_s": 8.257187437266111,
+      "batches": [
+        {
+          "tasks": [
+            {
+              "id": "t1",
+              "skill": "gesture",
+              "action": "perform",
+              "args": {
+                "name": "heart"
+              },
+              "after": []
+            },
+            {
+              "id": "t2",
+              "skill": "dance",
+              "action": "perform",
+              "args": {
+                "seconds": 2
+              },
+              "after": [
+                "t1"
+              ]
+            }
+          ],
+          "results": {
+            "t1": {
+              "status": "success",
+              "message": "Mock gesture.heart 已完成；参数 {'name': 'heart'}。",
+              "simulated": true
+            },
+            "t2": {
+              "status": "success",
+              "message": "Mock dance.perform 已完成；参数 {'seconds': 2}。",
+              "simulated": true
+            }
+          }
+        }
+      ],
+      "engine_events": [
+        {
+          "t": 5.71927464613691,
+          "id": "t1",
+          "state": "running"
+        },
+        {
+          "t": 6.0828084303066134,
+          "id": "t1",
+          "state": "success"
+        },
+        {
+          "t": 6.160191990900785,
+          "id": "t2",
+          "state": "running"
+        },
+        {
+          "t": 8.257083503063768,
+          "id": "t2",
+          "state": "success"
+        }
+      ],
+      "announcements": [
+        "收到，正在执行gesture",
+        "Mock gesture.heart 已完成；参数 {'name': 'heart'}。",
+        "收到，正在执行dance",
+        "Mock dance.perform 已完成；参数 {'seconds': 2}。"
+      ],
+      "backend_events": [
+        {
+          "t": 2716434.529296701,
+          "action": "gesture.heart",
+          "args": {
+            "name": "heart"
+          },
+          "state": "start"
+        },
+        {
+          "t": 2716434.792641796,
+          "action": "gesture.heart",
+          "args": {
+            "name": "heart"
+          },
+          "state": "success"
+        },
+        {
+          "t": 2716434.792709248,
+          "action": "gesture.heart",
+          "args": {
+            "name": "heart"
+          },
+          "state": "released"
+        },
+        {
+          "t": 2716434.958666378,
+          "action": "dance.perform",
+          "args": {
+            "seconds": 2
+          },
+          "state": "start"
+        },
+        {
+          "t": 2716436.968119137,
+          "action": "dance.perform",
+          "args": {
+            "seconds": 2
+          },
+          "state": "success"
+        },
+        {
+          "t": 2716436.968238277,
+          "action": "dance.perform",
+          "args": {
+            "seconds": 2
+          },
+          "state": "released"
+        }
+      ],
+      "model_calls": [
+        {
+          "input_tokens": 561,
+          "output_tokens": 130,
+          "generation_s": 2.9957423242740333,
+          "raw": "{\n  \"tasks\": [\n    {\n      \"id\": \"t1\",\n      \"skill\": \"gesture\",\n      \"action\": \"perform\",\n      \"args\": {\n        \"name\": \"heart\"\n      },\n      \"after\": []\n    },\n    {\n      \"id\": \"t2\",\n      \"skill\": \"dance\",\n      \"action\": \"perform\",\n      \"args\": {\n        \"seconds\": 2\n      },\n      \"after\": [\"t1\"]\n    }\n  ]\n  \n  \t   \n ,\n  \"reply\": \"任务已规划：先比个心，然后跳两秒舞。\"\n}",
+          "messages": [
+            {
+              "role": "system",
+              "content": "你是机器人任务规划器。输出一个JSON计划，不执行动作。只使用已安装技能。\n任务格式为id、skill、action、args、after。id用t1、t2等。先A后B：A的after=[]，B的after=[A的id]。\n同一robot.body资源不能并行。即使用户没有强调顺序，多个身体动作也要排好先后。\n可执行请求：reply为空，tasks列出任务。含糊请求：tasks=[]，reply简短追问。\n请求目录外能力：tasks=[]，reply说明当前不支持；不要询问该能力的细节。\n下面是程序加载的全部技能说明与精确动作定义。不得编造其他能力：\n[{\"skill\": \"dance\", \"instructions\": \"---\\nname: dance\\ndescription: 机器人跳一小段舞；持续时间可选 1、2 或 3 秒。\\n---\\n\\n# dance\\n\\nperform(seconds) 支持整数 1、2、3。没有指定时取 2 秒。跳舞占用 robot.body；先挥手再跳舞时，跳舞任务必须依赖挥手任务。这里只执行 Mock，不支持其他运动技能。\\n\", \"actions\": {\"perform\": {\"parameters\": {\"seconds\": {\"type\": \"integer\", \"enum\": [1, 2, 3], \"default\": 2}}, \"resources\": [\"robot.body\"]}}}, {\"skill\": \"gesture\", \"instructions\": \"---\\nname: gesture\\ndescription: 机器人挥手或比心；不包含跳舞。\\n---\\n\\n# gesture\\n\\nperform(name) 支持 wave（挥手）、heart（比心）。用户明确先后时必须通过 after 声明依赖；同一身体资源不可并发。这里只执行 Mock。\\n\", \"actions\": {\"perform\": {\"parameters\": {\"name\": {\"type\": \"string\", \"enum\": [\"wave\", \"heart\"]}}, \"resources\": [\"robot.body\"]}}}, {\"skill\": \"greeting\", \"instructions\": \"---\\nname: greeting\\ndescription: 向来宾说欢迎词、问好；只负责语言问候。\\n---\\n\\n# greeting\\n\\n使用 say(text) 向来宾问好。text 为不超过 100 字的欢迎词。可以自行组织简短欢迎词，不要追问无关信息。这里只执行 Mock，不输出真实语音。\\n\", \"actions\": {\"say\": {\"parameters\": {\"text\": {\"type\": \"string\"}}, \"resources\": [\"speaker\"]}}}]"
+            },
+            {
+              "role": "user",
+              "content": "比个心，做完之后再跳两秒舞。"
+            }
+          ],
+          "schema": {
+            "type": "object",
+            "properties": {
+              "reply": {
+                "type": "string",
+                "maxLength": 200
+              },
+              "tasks": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "dance"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "perform"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "seconds": {
+                              "type": "integer",
+                              "enum": [
+                                1,
+                                2,
+                                3
+                              ],
+                              "default": 2
+                            }
+                          },
+                          "required": [
+                            "seconds"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "gesture"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "perform"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "wave",
+                                "heart"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "greeting"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "say"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "text"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "maxItems": 8
+              }
+            },
+            "required": [
+              "reply",
+              "tasks"
+            ],
+            "additionalProperties": false
+          },
+          "catalog": [
+            {
+              "skill": "dance",
+              "instructions": "---\nname: dance\ndescription: 机器人跳一小段舞；持续时间可选 1、2 或 3 秒。\n---\n\n# dance\n\nperform(seconds) 支持整数 1、2、3。没有指定时取 2 秒。跳舞占用 robot.body；先挥手再跳舞时，跳舞任务必须依赖挥手任务。这里只执行 Mock，不支持其他运动技能。\n",
+              "actions": {
+                "perform": {
+                  "parameters": {
+                    "seconds": {
+                      "type": "integer",
+                      "enum": [
+                        1,
+                        2,
+                        3
+                      ],
+                      "default": 2
+                    }
+                  },
+                  "resources": [
+                    "robot.body"
+                  ]
+                }
+              }
+            },
+            {
+              "skill": "gesture",
+              "instructions": "---\nname: gesture\ndescription: 机器人挥手或比心；不包含跳舞。\n---\n\n# gesture\n\nperform(name) 支持 wave（挥手）、heart（比心）。用户明确先后时必须通过 after 声明依赖；同一身体资源不可并发。这里只执行 Mock。\n",
+              "actions": {
+                "perform": {
+                  "parameters": {
+                    "name": {
+                      "type": "string",
+                      "enum": [
+                        "wave",
+                        "heart"
+                      ]
+                    }
+                  },
+                  "resources": [
+                    "robot.body"
+                  ]
+                }
+              }
+            },
+            {
+              "skill": "greeting",
+              "instructions": "---\nname: greeting\ndescription: 向来宾说欢迎词、问好；只负责语言问候。\n---\n\n# greeting\n\n使用 say(text) 向来宾问好。text 为不超过 100 字的欢迎词。可以自行组织简短欢迎词，不要追问无关信息。这里只执行 Mock，不输出真实语音。\n",
+              "actions": {
+                "say": {
+                  "parameters": {
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "resources": [
+                    "speaker"
+                  ]
+                }
+              }
+            }
+          ],
+          "feedback": null,
+          "plan": {
+            "tasks": [
+              {
+                "id": "t1",
+                "skill": "gesture",
+                "action": "perform",
+                "args": {
+                  "name": "heart"
+                },
+                "after": []
+              },
+              {
+                "id": "t2",
+                "skill": "dance",
+                "action": "perform",
+                "args": {
+                  "seconds": 2
+                },
+                "after": [
+                  "t1"
+                ]
+              }
+            ],
+            "reply": "任务已规划：先比个心，然后跳两秒舞。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ambiguous",
+      "text": "来一个吧。",
+      "outcome": "complete",
+      "final": "greeting.say：模拟完成；gesture.perform：模拟完成；dance.perform：模拟完成。",
+      "error": null,
+      "cancel_sent": false,
+      "elapsed_s": 9.715148190967739,
+      "batches": [
+        {
+          "tasks": [
+            {
+              "id": "t1",
+              "skill": "greeting",
+              "action": "say",
+              "args": {
+                "text": "欢迎来到机器人世界！"
+              },
+              "after": []
+            },
+            {
+              "id": "t2",
+              "skill": "gesture",
+              "action": "perform",
+              "args": {
+                "name": "wave"
+              },
+              "after": [
+                "t1"
+              ]
+            },
+            {
+              "id": "t3",
+              "skill": "dance",
+              "action": "perform",
+              "args": {
+                "seconds": 2
+              },
+              "after": [
+                "t2"
+              ]
+            }
+          ],
+          "results": {
+            "t1": {
+              "status": "success",
+              "message": "Mock greeting.say 已完成；参数 {'text': '欢迎来到机器人世界！'}。",
+              "simulated": true
+            },
+            "t2": {
+              "status": "success",
+              "message": "Mock gesture.wave 已完成；参数 {'name': 'wave'}。",
+              "simulated": true
+            },
+            "t3": {
+              "status": "success",
+              "message": "Mock dance.perform 已完成；参数 {'seconds': 2}。",
+              "simulated": true
+            }
+          }
+        }
+      ],
+      "engine_events": [
+        {
+          "t": 6.888264671899378,
+          "id": "t1",
+          "state": "running"
+        },
+        {
+          "t": 7.090302634984255,
+          "id": "t1",
+          "state": "success"
+        },
+        {
+          "t": 7.165279088076204,
+          "id": "t2",
+          "state": "running"
+        },
+        {
+          "t": 7.527718062046915,
+          "id": "t2",
+          "state": "success"
+        },
+        {
+          "t": 7.615959449205548,
+          "id": "t3",
+          "state": "running"
+        },
+        {
+          "t": 9.71505013294518,
+          "id": "t3",
+          "state": "success"
+        }
+      ],
+      "announcements": [
+        "好的，正在执行greeting",
+        "Mock greeting.say 已完成；参数 {'text': '欢迎来到机器人世界！'}。",
+        "明白，正在执行gesture",
+        "Mock gesture.wave 已完成；参数 {'name': 'wave'}。",
+        "好的，正在执行dance",
+        "Mock dance.perform 已完成；参数 {'seconds': 2}。"
+      ],
+      "backend_events": [
+        {
+          "t": 2716443.952249847,
+          "action": "greeting.say",
+          "args": {
+            "text": "欢迎来到机器人世界！"
+          },
+          "state": "start"
+        },
+        {
+          "t": 2716444.056081404,
+          "action": "greeting.say",
+          "args": {
+            "text": "欢迎来到机器人世界！"
+          },
+          "state": "success"
+        },
+        {
+          "t": 2716444.056148581,
+          "action": "greeting.say",
+          "args": {
+            "text": "欢迎来到机器人世界！"
+          },
+          "state": "released"
+        },
+        {
+          "t": 2716444.231994067,
+          "action": "gesture.wave",
+          "args": {
+            "name": "wave"
+          },
+          "state": "start"
+        },
+        {
+          "t": 2716444.493022693,
+          "action": "gesture.wave",
+          "args": {
+            "name": "wave"
+          },
+          "state": "success"
+        },
+        {
+          "t": 2716444.493117439,
+          "action": "gesture.wave",
+          "args": {
+            "name": "wave"
+          },
+          "state": "released"
+        },
+        {
+          "t": 2716444.677388341,
+          "action": "dance.perform",
+          "args": {
+            "seconds": 2
+          },
+          "state": "start"
+        },
+        {
+          "t": 2716446.679760077,
+          "action": "dance.perform",
+          "args": {
+            "seconds": 2
+          },
+          "state": "success"
+        },
+        {
+          "t": 2716446.679860597,
+          "action": "dance.perform",
+          "args": {
+            "seconds": 2
+          },
+          "state": "released"
+        }
+      ],
+      "model_calls": [
+        {
+          "input_tokens": 553,
+          "output_tokens": 174,
+          "generation_s": 4.019378073979169,
+          "raw": "{\n  \"tasks\": [\n    {\n      \"id\": \"t1\",\n      \"skill\": \"greeting\",\n      \"action\": \"say\",\n      \"args\": {\n        \"text\": \"欢迎来到机器人世界！\"\n      },\n      \"after\": []\n    },\n    {\n      \"id\": \"t2\",\n      \"skill\": \"gesture\",\n      \"action\": \"perform\",\n      \"args\": {\n        \"name\": \"wave\"\n      },\n      \"after\": [\"t1\"]\n    },\n    {\n      \"id\": \"t3\",\n      \"skill\": \"dance\",\n      \"action\": \"perform\",\n      \"args\": {\n        \"seconds\": 2\n      },\n      \"after\": [\"t2\"]\n    }\n  ]\n, \"reply\": \"已为您安排一个问候、挥手和跳舞的流程。\"\n}",
+          "messages": [
+            {
+              "role": "system",
+              "content": "你是机器人任务规划器。输出一个JSON计划，不执行动作。只使用已安装技能。\n任务格式为id、skill、action、args、after。id用t1、t2等。先A后B：A的after=[]，B的after=[A的id]。\n同一robot.body资源不能并行。即使用户没有强调顺序，多个身体动作也要排好先后。\n可执行请求：reply为空，tasks列出任务。含糊请求：tasks=[]，reply简短追问。\n请求目录外能力：tasks=[]，reply说明当前不支持；不要询问该能力的细节。\n下面是程序加载的全部技能说明与精确动作定义。不得编造其他能力：\n[{\"skill\": \"dance\", \"instructions\": \"---\\nname: dance\\ndescription: 机器人跳一小段舞；持续时间可选 1、2 或 3 秒。\\n---\\n\\n# dance\\n\\nperform(seconds) 支持整数 1、2、3。没有指定时取 2 秒。跳舞占用 robot.body；先挥手再跳舞时，跳舞任务必须依赖挥手任务。这里只执行 Mock，不支持其他运动技能。\\n\", \"actions\": {\"perform\": {\"parameters\": {\"seconds\": {\"type\": \"integer\", \"enum\": [1, 2, 3], \"default\": 2}}, \"resources\": [\"robot.body\"]}}}, {\"skill\": \"gesture\", \"instructions\": \"---\\nname: gesture\\ndescription: 机器人挥手或比心；不包含跳舞。\\n---\\n\\n# gesture\\n\\nperform(name) 支持 wave（挥手）、heart（比心）。用户明确先后时必须通过 after 声明依赖；同一身体资源不可并发。这里只执行 Mock。\\n\", \"actions\": {\"perform\": {\"parameters\": {\"name\": {\"type\": \"string\", \"enum\": [\"wave\", \"heart\"]}}, \"resources\": [\"robot.body\"]}}}, {\"skill\": \"greeting\", \"instructions\": \"---\\nname: greeting\\ndescription: 向来宾说欢迎词、问好；只负责语言问候。\\n---\\n\\n# greeting\\n\\n使用 say(text) 向来宾问好。text 为不超过 100 字的欢迎词。可以自行组织简短欢迎词，不要追问无关信息。这里只执行 Mock，不输出真实语音。\\n\", \"actions\": {\"say\": {\"parameters\": {\"text\": {\"type\": \"string\"}}, \"resources\": [\"speaker\"]}}}]"
+            },
+            {
+              "role": "user",
+              "content": "来一个吧。"
+            }
+          ],
+          "schema": {
+            "type": "object",
+            "properties": {
+              "reply": {
+                "type": "string",
+                "maxLength": 200
+              },
+              "tasks": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "dance"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "perform"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "seconds": {
+                              "type": "integer",
+                              "enum": [
+                                1,
+                                2,
+                                3
+                              ],
+                              "default": 2
+                            }
+                          },
+                          "required": [
+                            "seconds"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "gesture"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "perform"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "wave",
+                                "heart"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "greeting"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "say"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "text"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "maxItems": 8
+              }
+            },
+            "required": [
+              "reply",
+              "tasks"
+            ],
+            "additionalProperties": false
+          },
+          "catalog": [
+            {
+              "skill": "dance",
+              "instructions": "---\nname: dance\ndescription: 机器人跳一小段舞；持续时间可选 1、2 或 3 秒。\n---\n\n# dance\n\nperform(seconds) 支持整数 1、2、3。没有指定时取 2 秒。跳舞占用 robot.body；先挥手再跳舞时，跳舞任务必须依赖挥手任务。这里只执行 Mock，不支持其他运动技能。\n",
+              "actions": {
+                "perform": {
+                  "parameters": {
+                    "seconds": {
+                      "type": "integer",
+                      "enum": [
+                        1,
+                        2,
+                        3
+                      ],
+                      "default": 2
+                    }
+                  },
+                  "resources": [
+                    "robot.body"
+                  ]
+                }
+              }
+            },
+            {
+              "skill": "gesture",
+              "instructions": "---\nname: gesture\ndescription: 机器人挥手或比心；不包含跳舞。\n---\n\n# gesture\n\nperform(name) 支持 wave（挥手）、heart（比心）。用户明确先后时必须通过 after 声明依赖；同一身体资源不可并发。这里只执行 Mock。\n",
+              "actions": {
+                "perform": {
+                  "parameters": {
+                    "name": {
+                      "type": "string",
+                      "enum": [
+                        "wave",
+                        "heart"
+                      ]
+                    }
+                  },
+                  "resources": [
+                    "robot.body"
+                  ]
+                }
+              }
+            },
+            {
+              "skill": "greeting",
+              "instructions": "---\nname: greeting\ndescription: 向来宾说欢迎词、问好；只负责语言问候。\n---\n\n# greeting\n\n使用 say(text) 向来宾问好。text 为不超过 100 字的欢迎词。可以自行组织简短欢迎词，不要追问无关信息。这里只执行 Mock，不输出真实语音。\n",
+              "actions": {
+                "say": {
+                  "parameters": {
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "resources": [
+                    "speaker"
+                  ]
+                }
+              }
+            }
+          ],
+          "feedback": null,
+          "plan": {
+            "tasks": [
+              {
+                "id": "t1",
+                "skill": "greeting",
+                "action": "say",
+                "args": {
+                  "text": "欢迎来到机器人世界！"
+                },
+                "after": []
+              },
+              {
+                "id": "t2",
+                "skill": "gesture",
+                "action": "perform",
+                "args": {
+                  "name": "wave"
+                },
+                "after": [
+                  "t1"
+                ]
+              },
+              {
+                "id": "t3",
+                "skill": "dance",
+                "action": "perform",
+                "args": {
+                  "seconds": 2
+                },
+                "after": [
+                  "t2"
+                ]
+              }
+            ],
+            "reply": "已为您安排一个问候、挥手和跳舞的流程。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "unsupported",
+      "text": "去厨房给客人倒杯水。",
+      "outcome": "complete",
+      "final": "当前不支持倒水任务。",
+      "error": null,
+      "cancel_sent": false,
+      "elapsed_s": 2.7512982352636755,
+      "batches": [],
+      "engine_events": [],
+      "announcements": [],
+      "backend_events": [],
+      "model_calls": [
+        {
+          "input_tokens": 557,
+          "output_tokens": 23,
+          "generation_s": 0.7004455882124603,
+          "raw": "{\n  \"tasks\": []\n  ,\n  \"reply\": \"当前不支持倒水任务。\"\n}",
+          "messages": [
+            {
+              "role": "system",
+              "content": "你是机器人任务规划器。输出一个JSON计划，不执行动作。只使用已安装技能。\n任务格式为id、skill、action、args、after。id用t1、t2等。先A后B：A的after=[]，B的after=[A的id]。\n同一robot.body资源不能并行。即使用户没有强调顺序，多个身体动作也要排好先后。\n可执行请求：reply为空，tasks列出任务。含糊请求：tasks=[]，reply简短追问。\n请求目录外能力：tasks=[]，reply说明当前不支持；不要询问该能力的细节。\n下面是程序加载的全部技能说明与精确动作定义。不得编造其他能力：\n[{\"skill\": \"dance\", \"instructions\": \"---\\nname: dance\\ndescription: 机器人跳一小段舞；持续时间可选 1、2 或 3 秒。\\n---\\n\\n# dance\\n\\nperform(seconds) 支持整数 1、2、3。没有指定时取 2 秒。跳舞占用 robot.body；先挥手再跳舞时，跳舞任务必须依赖挥手任务。这里只执行 Mock，不支持其他运动技能。\\n\", \"actions\": {\"perform\": {\"parameters\": {\"seconds\": {\"type\": \"integer\", \"enum\": [1, 2, 3], \"default\": 2}}, \"resources\": [\"robot.body\"]}}}, {\"skill\": \"gesture\", \"instructions\": \"---\\nname: gesture\\ndescription: 机器人挥手或比心；不包含跳舞。\\n---\\n\\n# gesture\\n\\nperform(name) 支持 wave（挥手）、heart（比心）。用户明确先后时必须通过 after 声明依赖；同一身体资源不可并发。这里只执行 Mock。\\n\", \"actions\": {\"perform\": {\"parameters\": {\"name\": {\"type\": \"string\", \"enum\": [\"wave\", \"heart\"]}}, \"resources\": [\"robot.body\"]}}}, {\"skill\": \"greeting\", \"instructions\": \"---\\nname: greeting\\ndescription: 向来宾说欢迎词、问好；只负责语言问候。\\n---\\n\\n# greeting\\n\\n使用 say(text) 向来宾问好。text 为不超过 100 字的欢迎词。可以自行组织简短欢迎词，不要追问无关信息。这里只执行 Mock，不输出真实语音。\\n\", \"actions\": {\"say\": {\"parameters\": {\"text\": {\"type\": \"string\"}}, \"resources\": [\"speaker\"]}}}]"
+            },
+            {
+              "role": "user",
+              "content": "去厨房给客人倒杯水。"
+            }
+          ],
+          "schema": {
+            "type": "object",
+            "properties": {
+              "reply": {
+                "type": "string",
+                "maxLength": 200
+              },
+              "tasks": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "dance"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "perform"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "seconds": {
+                              "type": "integer",
+                              "enum": [
+                                1,
+                                2,
+                                3
+                              ],
+                              "default": 2
+                            }
+                          },
+                          "required": [
+                            "seconds"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "gesture"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "perform"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "wave",
+                                "heart"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "greeting"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "say"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "text"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "maxItems": 8
+              }
+            },
+            "required": [
+              "reply",
+              "tasks"
+            ],
+            "additionalProperties": false
+          },
+          "catalog": [
+            {
+              "skill": "dance",
+              "instructions": "---\nname: dance\ndescription: 机器人跳一小段舞；持续时间可选 1、2 或 3 秒。\n---\n\n# dance\n\nperform(seconds) 支持整数 1、2、3。没有指定时取 2 秒。跳舞占用 robot.body；先挥手再跳舞时，跳舞任务必须依赖挥手任务。这里只执行 Mock，不支持其他运动技能。\n",
+              "actions": {
+                "perform": {
+                  "parameters": {
+                    "seconds": {
+                      "type": "integer",
+                      "enum": [
+                        1,
+                        2,
+                        3
+                      ],
+                      "default": 2
+                    }
+                  },
+                  "resources": [
+                    "robot.body"
+                  ]
+                }
+              }
+            },
+            {
+              "skill": "gesture",
+              "instructions": "---\nname: gesture\ndescription: 机器人挥手或比心；不包含跳舞。\n---\n\n# gesture\n\nperform(name) 支持 wave（挥手）、heart（比心）。用户明确先后时必须通过 after 声明依赖；同一身体资源不可并发。这里只执行 Mock。\n",
+              "actions": {
+                "perform": {
+                  "parameters": {
+                    "name": {
+                      "type": "string",
+                      "enum": [
+                        "wave",
+                        "heart"
+                      ]
+                    }
+                  },
+                  "resources": [
+                    "robot.body"
+                  ]
+                }
+              }
+            },
+            {
+              "skill": "greeting",
+              "instructions": "---\nname: greeting\ndescription: 向来宾说欢迎词、问好；只负责语言问候。\n---\n\n# greeting\n\n使用 say(text) 向来宾问好。text 为不超过 100 字的欢迎词。可以自行组织简短欢迎词，不要追问无关信息。这里只执行 Mock，不输出真实语音。\n",
+              "actions": {
+                "say": {
+                  "parameters": {
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "resources": [
+                    "speaker"
+                  ]
+                }
+              }
+            }
+          ],
+          "feedback": null,
+          "plan": {
+            "tasks": [],
+            "reply": "当前不支持倒水任务。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "failure",
+      "text": "先挥手，再跳一秒舞。",
+      "fail_action": "gesture.wave",
+      "outcome": "complete",
+      "final": "gesture.perform：模拟失败；dance.perform：未执行（前置任务失败）。",
+      "error": null,
+      "cancel_sent": false,
+      "elapsed_s": 5.45341521082446,
+      "batches": [
+        {
+          "tasks": [
+            {
+              "id": "t1",
+              "skill": "gesture",
+              "action": "perform",
+              "args": {
+                "name": "wave"
+              },
+              "after": []
+            },
+            {
+              "id": "t2",
+              "skill": "dance",
+              "action": "perform",
+              "args": {
+                "seconds": 1
+              },
+              "after": [
+                "t1"
+              ]
+            }
+          ],
+          "results": {
+            "t1": {
+              "status": "failed",
+              "message": "Mock gesture.wave 失败：执行器忙，未完成动作。"
+            },
+            "t2": {
+              "status": "skipped",
+              "message": "前置任务未成功，后续任务未执行。"
+            }
+          }
+        }
+      ],
+      "engine_events": [
+        {
+          "t": 5.3701851749792695,
+          "id": "t1",
+          "state": "running"
+        },
+        {
+          "t": 5.453321562614292,
+          "id": "t1",
+          "state": "failed"
+        },
+        {
+          "t": 5.453328478615731,
+          "id": "t2",
+          "state": "skipped"
+        }
+      ],
+      "announcements": [
+        "明白，正在执行gesture",
+        "Mock gesture.wave 失败：执行器忙，未完成动作。",
+        "前置任务未成功，后续任务未执行。"
+      ],
+      "backend_events": [
+        {
+          "t": 2716454.912558382,
+          "action": "gesture.wave",
+          "args": {
+            "name": "wave"
+          },
+          "state": "start"
+        },
+        {
+          "t": 2716454.912834265,
+          "action": "gesture.wave",
+          "args": {
+            "name": "wave"
+          },
+          "state": "failed",
+          "reason": "MOCK_ACTUATOR_BUSY"
+        },
+        {
+          "t": 2716454.912842408,
+          "action": "gesture.wave",
+          "args": {
+            "name": "wave"
+          },
+          "state": "released"
+        }
+      ],
+      "model_calls": [
+        {
+          "input_tokens": 557,
+          "output_tokens": 119,
+          "generation_s": 2.688970726914704,
+          "raw": "{\n  \"tasks\": [\n    {\n      \"id\": \"t1\",\n      \"skill\": \"gesture\",\n      \"action\": \"perform\",\n      \"args\": {\n        \"name\": \"wave\"\n      },\n      \"after\": []\n    },\n    {\n      \"id\": \"t2\",\n      \"skill\": \"dance\",\n      \"action\": \"perform\",\n      \"args\": {\n        \"seconds\": 1\n      },\n      \"after\": [\"t1\"]\n    }\n  ]\n  \n  \t   \n ,\n  \"reply\": \"任务已规划。\"\n}",
+          "messages": [
+            {
+              "role": "system",
+              "content": "你是机器人任务规划器。输出一个JSON计划，不执行动作。只使用已安装技能。\n任务格式为id、skill、action、args、after。id用t1、t2等。先A后B：A的after=[]，B的after=[A的id]。\n同一robot.body资源不能并行。即使用户没有强调顺序，多个身体动作也要排好先后。\n可执行请求：reply为空，tasks列出任务。含糊请求：tasks=[]，reply简短追问。\n请求目录外能力：tasks=[]，reply说明当前不支持；不要询问该能力的细节。\n下面是程序加载的全部技能说明与精确动作定义。不得编造其他能力：\n[{\"skill\": \"dance\", \"instructions\": \"---\\nname: dance\\ndescription: 机器人跳一小段舞；持续时间可选 1、2 或 3 秒。\\n---\\n\\n# dance\\n\\nperform(seconds) 支持整数 1、2、3。没有指定时取 2 秒。跳舞占用 robot.body；先挥手再跳舞时，跳舞任务必须依赖挥手任务。这里只执行 Mock，不支持其他运动技能。\\n\", \"actions\": {\"perform\": {\"parameters\": {\"seconds\": {\"type\": \"integer\", \"enum\": [1, 2, 3], \"default\": 2}}, \"resources\": [\"robot.body\"]}}}, {\"skill\": \"gesture\", \"instructions\": \"---\\nname: gesture\\ndescription: 机器人挥手或比心；不包含跳舞。\\n---\\n\\n# gesture\\n\\nperform(name) 支持 wave（挥手）、heart（比心）。用户明确先后时必须通过 after 声明依赖；同一身体资源不可并发。这里只执行 Mock。\\n\", \"actions\": {\"perform\": {\"parameters\": {\"name\": {\"type\": \"string\", \"enum\": [\"wave\", \"heart\"]}}, \"resources\": [\"robot.body\"]}}}, {\"skill\": \"greeting\", \"instructions\": \"---\\nname: greeting\\ndescription: 向来宾说欢迎词、问好；只负责语言问候。\\n---\\n\\n# greeting\\n\\n使用 say(text) 向来宾问好。text 为不超过 100 字的欢迎词。可以自行组织简短欢迎词，不要追问无关信息。这里只执行 Mock，不输出真实语音。\\n\", \"actions\": {\"say\": {\"parameters\": {\"text\": {\"type\": \"string\"}}, \"resources\": [\"speaker\"]}}}]"
+            },
+            {
+              "role": "user",
+              "content": "先挥手，再跳一秒舞。"
+            }
+          ],
+          "schema": {
+            "type": "object",
+            "properties": {
+              "reply": {
+                "type": "string",
+                "maxLength": 200
+              },
+              "tasks": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "dance"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "perform"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "seconds": {
+                              "type": "integer",
+                              "enum": [
+                                1,
+                                2,
+                                3
+                              ],
+                              "default": 2
+                            }
+                          },
+                          "required": [
+                            "seconds"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "gesture"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "perform"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "wave",
+                                "heart"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "greeting"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "say"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "text"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "maxItems": 8
+              }
+            },
+            "required": [
+              "reply",
+              "tasks"
+            ],
+            "additionalProperties": false
+          },
+          "catalog": [
+            {
+              "skill": "dance",
+              "instructions": "---\nname: dance\ndescription: 机器人跳一小段舞；持续时间可选 1、2 或 3 秒。\n---\n\n# dance\n\nperform(seconds) 支持整数 1、2、3。没有指定时取 2 秒。跳舞占用 robot.body；先挥手再跳舞时，跳舞任务必须依赖挥手任务。这里只执行 Mock，不支持其他运动技能。\n",
+              "actions": {
+                "perform": {
+                  "parameters": {
+                    "seconds": {
+                      "type": "integer",
+                      "enum": [
+                        1,
+                        2,
+                        3
+                      ],
+                      "default": 2
+                    }
+                  },
+                  "resources": [
+                    "robot.body"
+                  ]
+                }
+              }
+            },
+            {
+              "skill": "gesture",
+              "instructions": "---\nname: gesture\ndescription: 机器人挥手或比心；不包含跳舞。\n---\n\n# gesture\n\nperform(name) 支持 wave（挥手）、heart（比心）。用户明确先后时必须通过 after 声明依赖；同一身体资源不可并发。这里只执行 Mock。\n",
+              "actions": {
+                "perform": {
+                  "parameters": {
+                    "name": {
+                      "type": "string",
+                      "enum": [
+                        "wave",
+                        "heart"
+                      ]
+                    }
+                  },
+                  "resources": [
+                    "robot.body"
+                  ]
+                }
+              }
+            },
+            {
+              "skill": "greeting",
+              "instructions": "---\nname: greeting\ndescription: 向来宾说欢迎词、问好；只负责语言问候。\n---\n\n# greeting\n\n使用 say(text) 向来宾问好。text 为不超过 100 字的欢迎词。可以自行组织简短欢迎词，不要追问无关信息。这里只执行 Mock，不输出真实语音。\n",
+              "actions": {
+                "say": {
+                  "parameters": {
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "resources": [
+                    "speaker"
+                  ]
+                }
+              }
+            }
+          ],
+          "feedback": null,
+          "plan": {
+            "tasks": [
+              {
+                "id": "t1",
+                "skill": "gesture",
+                "action": "perform",
+                "args": {
+                  "name": "wave"
+                },
+                "after": []
+              },
+              {
+                "id": "t2",
+                "skill": "dance",
+                "action": "perform",
+                "args": {
+                  "seconds": 1
+                },
+                "after": [
+                  "t1"
+                ]
+              }
+            ],
+            "reply": "任务已规划。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cancel",
+      "text": "先跳三秒舞，然后比心。",
+      "cancel_after_start": 0.3,
+      "outcome": "cancelled",
+      "final": "已处理取消请求，当前 Mock 任务已退出，后续任务未启动。",
+      "error": {
+        "type": "RuntimeError",
+        "message": "任务已取消"
+      },
+      "cancel_sent": true,
+      "elapsed_s": 5.640162989962846,
+      "batches": [
+        {
+          "tasks": [
+            {
+              "id": "t1",
+              "skill": "dance",
+              "action": "perform",
+              "args": {
+                "seconds": 3
+              },
+              "after": []
+            },
+            {
+              "id": "t2",
+              "skill": "gesture",
+              "action": "perform",
+              "args": {
+                "name": "heart"
+              },
+              "after": [
+                "t1"
+              ]
+            }
+          ]
+        }
+      ],
+      "engine_events": [
+        {
+          "t": 5.216026703827083,
+          "id": "t1",
+          "state": "running"
+        },
+        {
+          "t": 5.5594822759740055,
+          "state": "cancel_requested"
+        }
+      ],
+      "announcements": [
+        "明白，正在执行dance"
+      ],
+      "backend_events": [
+        {
+          "t": 2716460.212327159,
+          "action": "dance.perform",
+          "args": {
+            "seconds": 3
+          },
+          "state": "start"
+        },
+        {
+          "t": 2716460.555873769,
+          "action": "dance.perform",
+          "args": {
+            "seconds": 3
+          },
+          "state": "released"
+        }
+      ],
+      "model_calls": [
+        {
+          "input_tokens": 559,
+          "output_tokens": 114,
+          "generation_s": 2.563615484163165,
+          "raw": "{\n  \"tasks\": [\n    {\n      \"id\": \"t1\",\n      \"skill\": \"dance\",\n      \"action\": \"perform\",\n      \"args\": {\n        \"seconds\": 3\n      },\n      \"after\": []\n    },\n    {\n      \"id\": \"t2\",\n      \"skill\": \"gesture\",\n      \"action\": \"perform\",\n      \"args\": {\n        \"name\": \"heart\"\n      },\n      \"after\": [\"t1\"]\n    }\n  ]\n, \"reply\": \"任务已规划。\" \n}",
+          "messages": [
+            {
+              "role": "system",
+              "content": "你是机器人任务规划器。输出一个JSON计划，不执行动作。只使用已安装技能。\n任务格式为id、skill、action、args、after。id用t1、t2等。先A后B：A的after=[]，B的after=[A的id]。\n同一robot.body资源不能并行。即使用户没有强调顺序，多个身体动作也要排好先后。\n可执行请求：reply为空，tasks列出任务。含糊请求：tasks=[]，reply简短追问。\n请求目录外能力：tasks=[]，reply说明当前不支持；不要询问该能力的细节。\n下面是程序加载的全部技能说明与精确动作定义。不得编造其他能力：\n[{\"skill\": \"dance\", \"instructions\": \"---\\nname: dance\\ndescription: 机器人跳一小段舞；持续时间可选 1、2 或 3 秒。\\n---\\n\\n# dance\\n\\nperform(seconds) 支持整数 1、2、3。没有指定时取 2 秒。跳舞占用 robot.body；先挥手再跳舞时，跳舞任务必须依赖挥手任务。这里只执行 Mock，不支持其他运动技能。\\n\", \"actions\": {\"perform\": {\"parameters\": {\"seconds\": {\"type\": \"integer\", \"enum\": [1, 2, 3], \"default\": 2}}, \"resources\": [\"robot.body\"]}}}, {\"skill\": \"gesture\", \"instructions\": \"---\\nname: gesture\\ndescription: 机器人挥手或比心；不包含跳舞。\\n---\\n\\n# gesture\\n\\nperform(name) 支持 wave（挥手）、heart（比心）。用户明确先后时必须通过 after 声明依赖；同一身体资源不可并发。这里只执行 Mock。\\n\", \"actions\": {\"perform\": {\"parameters\": {\"name\": {\"type\": \"string\", \"enum\": [\"wave\", \"heart\"]}}, \"resources\": [\"robot.body\"]}}}, {\"skill\": \"greeting\", \"instructions\": \"---\\nname: greeting\\ndescription: 向来宾说欢迎词、问好；只负责语言问候。\\n---\\n\\n# greeting\\n\\n使用 say(text) 向来宾问好。text 为不超过 100 字的欢迎词。可以自行组织简短欢迎词，不要追问无关信息。这里只执行 Mock，不输出真实语音。\\n\", \"actions\": {\"say\": {\"parameters\": {\"text\": {\"type\": \"string\"}}, \"resources\": [\"speaker\"]}}}]"
+            },
+            {
+              "role": "user",
+              "content": "先跳三秒舞，然后比心。"
+            }
+          ],
+          "schema": {
+            "type": "object",
+            "properties": {
+              "reply": {
+                "type": "string",
+                "maxLength": 200
+              },
+              "tasks": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "dance"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "perform"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "seconds": {
+                              "type": "integer",
+                              "enum": [
+                                1,
+                                2,
+                                3
+                              ],
+                              "default": 2
+                            }
+                          },
+                          "required": [
+                            "seconds"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "gesture"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "perform"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "wave",
+                                "heart"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "enum": [
+                            "t1",
+                            "t2",
+                            "t3",
+                            "t4",
+                            "t5",
+                            "t6",
+                            "t7",
+                            "t8"
+                          ]
+                        },
+                        "skill": {
+                          "type": "string",
+                          "enum": [
+                            "greeting"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "enum": [
+                            "say"
+                          ]
+                        },
+                        "args": {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "text"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "after": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "t1",
+                              "t2",
+                              "t3",
+                              "t4",
+                              "t5",
+                              "t6",
+                              "t7",
+                              "t8"
+                            ]
+                          },
+                          "maxItems": 7
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "skill",
+                        "action",
+                        "args",
+                        "after"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "maxItems": 8
+              }
+            },
+            "required": [
+              "reply",
+              "tasks"
+            ],
+            "additionalProperties": false
+          },
+          "catalog": [
+            {
+              "skill": "dance",
+              "instructions": "---\nname: dance\ndescription: 机器人跳一小段舞；持续时间可选 1、2 或 3 秒。\n---\n\n# dance\n\nperform(seconds) 支持整数 1、2、3。没有指定时取 2 秒。跳舞占用 robot.body；先挥手再跳舞时，跳舞任务必须依赖挥手任务。这里只执行 Mock，不支持其他运动技能。\n",
+              "actions": {
+                "perform": {
+                  "parameters": {
+                    "seconds": {
+                      "type": "integer",
+                      "enum": [
+                        1,
+                        2,
+                        3
+                      ],
+                      "default": 2
+                    }
+                  },
+                  "resources": [
+                    "robot.body"
+                  ]
+                }
+              }
+            },
+            {
+              "skill": "gesture",
+              "instructions": "---\nname: gesture\ndescription: 机器人挥手或比心；不包含跳舞。\n---\n\n# gesture\n\nperform(name) 支持 wave（挥手）、heart（比心）。用户明确先后时必须通过 after 声明依赖；同一身体资源不可并发。这里只执行 Mock。\n",
+              "actions": {
+                "perform": {
+                  "parameters": {
+                    "name": {
+                      "type": "string",
+                      "enum": [
+                        "wave",
+                        "heart"
+                      ]
+                    }
+                  },
+                  "resources": [
+                    "robot.body"
+                  ]
+                }
+              }
+            },
+            {
+              "skill": "greeting",
+              "instructions": "---\nname: greeting\ndescription: 向来宾说欢迎词、问好；只负责语言问候。\n---\n\n# greeting\n\n使用 say(text) 向来宾问好。text 为不超过 100 字的欢迎词。可以自行组织简短欢迎词，不要追问无关信息。这里只执行 Mock，不输出真实语音。\n",
+              "actions": {
+                "say": {
+                  "parameters": {
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "resources": [
+                    "speaker"
+                  ]
+                }
+              }
+            }
+          ],
+          "feedback": null,
+          "plan": {
+            "tasks": [
+              {
+                "id": "t1",
+                "skill": "dance",
+                "action": "perform",
+                "args": {
+                  "seconds": 3
+                },
+                "after": []
+              },
+              {
+                "id": "t2",
+                "skill": "gesture",
+                "action": "perform",
+                "args": {
+                  "name": "heart"
+                },
+                "after": [
+                  "t1"
+                ]
+              }
+            ],
+            "reply": "任务已规划。"
+          }
+        }
+      ]
+    }
+  ],
+  "guard_tests": [
+    {
+      "case": "unknown_skill",
+      "rejected": true,
+      "reason": "未安装的技能或不支持的动作"
+    },
+    {
+      "case": "same_body_without_order",
+      "rejected": true,
+      "reason": "同一资源的任务必须指定先后顺序"
+    },
+    {
+      "case": "dependency_cycle",
+      "rejected": true,
+      "reason": "任务依赖不存在或成环"
+    }
+  ],
+  "environment": {
+    "python": "3.11.16",
+    "torch": "2.7.1+cu128",
+    "transformers": "4.51.3",
+    "gpu": "NVIDIA GeForce RTX 5070 Ti",
+    "dtype": "bfloat16",
+    "model": "Qwen/Qwen3-4B",
+    "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+    "primebuddy_revision": "8731c2fcbe4aed7183882cab14f403df96bab62e",
+    "do_sample": false,
+    "planner": "schema_constrained",
+    "enable_thinking": false
+  },
+  "peak_allocated_mib": 7823.2490234375,
+  "peak_reserved_mib": 8420.0
+}

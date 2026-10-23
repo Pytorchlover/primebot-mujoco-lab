@@ -1,0 +1,6 @@
+{"t": 2715686.213279378, "action": "greeting.say", "args": {"text": "欢迎光临"}, "state": "start"}
+{"t": 2715686.316322467, "action": "greeting.say", "args": {"text": "欢迎光临"}, "state": "success"}
+{"t": 2715686.316397016, "action": "greeting.say", "args": {"text": "欢迎光临"}, "state": "released"}
+{"t": 2715686.487767582, "action": "gesture.wave", "args": {"name": "wave"}, "state": "start"}
+{"t": 2715686.758382445, "action": "gesture.wave", "args": {"name": "wave"}, "state": "success"}
+{"t": 2715686.758454925, "action": "gesture.wave", "args": {"name": "wave"}, "state": "released"}

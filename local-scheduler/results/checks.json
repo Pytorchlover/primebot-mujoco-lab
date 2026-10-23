@@ -1,0 +1,130 @@
+[
+  {
+    "check": "wave: no runtime error",
+    "passed": true
+  },
+  {
+    "check": "wave: correct action",
+    "passed": true
+  },
+  {
+    "check": "wave: sequential execution",
+    "passed": true
+  },
+  {
+    "check": "wave: mock released",
+    "passed": true
+  },
+  {
+    "check": "welcome: no runtime error",
+    "passed": true
+  },
+  {
+    "check": "welcome: exact order",
+    "passed": true
+  },
+  {
+    "check": "welcome: sequential execution",
+    "passed": true
+  },
+  {
+    "check": "welcome: sequential execution",
+    "passed": true
+  },
+  {
+    "check": "welcome: sequential execution",
+    "passed": true
+  },
+  {
+    "check": "welcome: mock released",
+    "passed": true
+  },
+  {
+    "check": "heart: no runtime error",
+    "passed": true
+  },
+  {
+    "check": "heart: exact order",
+    "passed": true
+  },
+  {
+    "check": "heart: sequential execution",
+    "passed": true
+  },
+  {
+    "check": "heart: sequential execution",
+    "passed": true
+  },
+  {
+    "check": "heart: mock released",
+    "passed": true
+  },
+  {
+    "check": "ambiguous: no runtime error",
+    "passed": true
+  },
+  {
+    "check": "ambiguous: zero actions",
+    "passed": true
+  },
+  {
+    "check": "ambiguous: mock released",
+    "passed": true
+  },
+  {
+    "check": "unsupported: no runtime error",
+    "passed": true
+  },
+  {
+    "check": "unsupported: zero actions",
+    "passed": true
+  },
+  {
+    "check": "unsupported: mock released",
+    "passed": true
+  },
+  {
+    "check": "failure: no runtime error",
+    "passed": true
+  },
+  {
+    "check": "failure: no dance and no retry",
+    "passed": true
+  },
+  {
+    "check": "failure: reported by backend",
+    "passed": true
+  },
+  {
+    "check": "failure: sequential execution",
+    "passed": true
+  },
+  {
+    "check": "failure: mock released",
+    "passed": true
+  },
+  {
+    "check": "cancel: no runtime error",
+    "passed": true
+  },
+  {
+    "check": "cancel: no following heart",
+    "passed": true
+  },
+  {
+    "check": "cancel: interrupted and released",
+    "passed": true
+  },
+  {
+    "check": "cancel: sequential execution",
+    "passed": true
+  },
+  {
+    "check": "cancel: mock released",
+    "passed": true
+  },
+  {
+    "check": "guard tests reject all three invalid plans",
+    "passed": true
+  }
+]

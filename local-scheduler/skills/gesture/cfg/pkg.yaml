@@ -1,0 +1,23 @@
+{
+  "package_name": "gesture",
+  "version": "0.1.0",
+  "primebuddy": {
+    "entrypoint": "src/actions.py",
+    "actions": {
+      "perform": {
+        "parameters": {
+          "name": {
+            "type": "string",
+            "enum": [
+              "wave",
+              "heart"
+            ]
+          }
+        },
+        "resources": [
+          "robot.body"
+        ]
+      }
+    }
+  }
+}

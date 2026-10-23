@@ -1,0 +1,382 @@
+{
+  "id": "wave",
+  "text": "跟门口的客人挥挥手。",
+  "outcome": "complete",
+  "final": "gesture.perform：模拟完成。",
+  "error": null,
+  "cancel_sent": false,
+  "elapsed_s": 9.161817051004618,
+  "batches": [
+    {
+      "tasks": [
+        {
+          "id": "t1",
+          "skill": "gesture",
+          "action": "perform",
+          "args": {
+            "name": "wave"
+          },
+          "after": []
+        }
+      ],
+      "results": {
+        "t1": {
+          "status": "success",
+          "message": "Mock gesture.wave 已完成；参数 {'name': 'wave'}。",
+          "simulated": true
+        }
+      }
+    }
+  ],
+  "engine_events": [
+    {
+      "t": 8.813362868037075,
+      "id": "t1",
+      "state": "running"
+    },
+    {
+      "t": 9.161716626957059,
+      "id": "t1",
+      "state": "success"
+    }
+  ],
+  "announcements": [
+    "明白，正在执行gesture",
+    "Mock gesture.wave 已完成；参数 {'name': 'wave'}。"
+  ],
+  "backend_events": [
+    {
+      "t": 2716665.697886905,
+      "action": "gesture.wave",
+      "args": {
+        "name": "wave"
+      },
+      "state": "start"
+    },
+    {
+      "t": 2716665.959063375,
+      "action": "gesture.wave",
+      "args": {
+        "name": "wave"
+      },
+      "state": "success"
+    },
+    {
+      "t": 2716665.959157765,
+      "action": "gesture.wave",
+      "args": {
+        "name": "wave"
+      },
+      "state": "released"
+    }
+  ],
+  "model_calls": [
+    {
+      "input_tokens": 270,
+      "output_tokens": 111,
+      "generation_s": 2.397260542958975,
+      "raw": "<think>\n好的，我需要分析用户的请求“跟门口的客人挥挥手。”是否属于execute、clarify或unsupported。首先，用户明确要求执行一个动作，即“挥挥手”。根据已安装的技能，gesture技能描述是机器人挥手或比心，不包含跳舞。用户的需求是挥手，所以动作种类明确，属于execute。不需要进一步询问或说明不支持，因此决策是execute，回复留空。\n</think>\n\n```json\n{\n  \"decision\": \"execute\",\n  \"reply\": \"\"\n}\n```",
+      "messages": [
+        {
+          "role": "system",
+          "content": "判断用户是否明确要求机器人执行已安装动作。只分类，不安排任务。\nexecute：明确要求执行，且动作种类能从原话确定，reply留空。\nclarify：动作种类不明确，或者只是询问能力而未要求执行。reply简短追问，不能自行选择动作。\nunsupported：明确要求了目录外能力。reply说明目前不支持，不追问该能力的执行细节。\n多个动作组成的明确命令也属于execute；不要把明确的命令改成确认问题。只有原话缺少动作种类时才clarify。\n根据原话判断，不要因为目录里存在技能就替用户挑一个。输出严格JSON，包含decision和reply。已安装技能：[{\"name\": \"dance\", \"description\": \"机器人跳一小段舞；持续时间可选 1、2 或 3 秒。\", \"location\": \"SKILL.md\"}, {\"name\": \"gesture\", \"description\": \"机器人挥手或比心；不包含跳舞。\", \"location\": \"SKILL.md\"}, {\"name\": \"greeting\", \"description\": \"向来宾说欢迎词、问好；只负责语言问候。\", \"location\": \"SKILL.md\"}]"
+        },
+        {
+          "role": "user",
+          "content": "跟门口的客人挥挥手。"
+        }
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "decision": {
+            "type": "string",
+            "enum": [
+              "execute",
+              "clarify",
+              "unsupported"
+            ]
+          },
+          "reply": {
+            "type": "string",
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "decision",
+          "reply"
+        ],
+        "additionalProperties": false
+      },
+      "kind": "intent",
+      "plan": {
+        "decision": "execute",
+        "reply": ""
+      }
+    },
+    {
+      "input_tokens": 556,
+      "output_tokens": 74,
+      "generation_s": 1.792640137951821,
+      "raw": "{\n  \"tasks\": [\n    {\n      \"id\": \"t1\",\n      \"skill\": \"gesture\",\n      \"action\": \"perform\",\n      \"args\": {\n        \"name\": \"wave\"\n      },\n      \"after\": []\n    }\n  ]\n  \n  ,\n  \"reply\": \"已为您安排机器人向门口的客人挥手。\"\n}",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你是机器人任务规划器。输出一个JSON计划，不执行动作。只使用已安装技能。\n任务格式为id、skill、action、args、after。id用t1、t2等。先A后B：A的after=[]，B的after=[A的id]。\n同一robot.body资源不能并行。即使用户没有强调顺序，多个身体动作也要排好先后。\n可执行请求：reply为空，tasks列出任务。含糊请求：tasks=[]，reply简短追问。\n请求目录外能力：tasks=[]，reply说明当前不支持；不要询问该能力的细节。\n下面是程序加载的全部技能说明与精确动作定义。不得编造其他能力：\n[{\"skill\": \"dance\", \"instructions\": \"---\\nname: dance\\ndescription: 机器人跳一小段舞；持续时间可选 1、2 或 3 秒。\\n---\\n\\n# dance\\n\\nperform(seconds) 支持整数 1、2、3。没有指定时取 2 秒。跳舞占用 robot.body；先挥手再跳舞时，跳舞任务必须依赖挥手任务。这里只执行 Mock，不支持其他运动技能。\\n\", \"actions\": {\"perform\": {\"parameters\": {\"seconds\": {\"type\": \"integer\", \"enum\": [1, 2, 3], \"default\": 2}}, \"resources\": [\"robot.body\"]}}}, {\"skill\": \"gesture\", \"instructions\": \"---\\nname: gesture\\ndescription: 机器人挥手或比心；不包含跳舞。\\n---\\n\\n# gesture\\n\\nperform(name) 支持 wave（挥手）、heart（比心）。用户明确先后时必须通过 after 声明依赖；同一身体资源不可并发。这里只执行 Mock。\\n\", \"actions\": {\"perform\": {\"parameters\": {\"name\": {\"type\": \"string\", \"enum\": [\"wave\", \"heart\"]}}, \"resources\": [\"robot.body\"]}}}, {\"skill\": \"greeting\", \"instructions\": \"---\\nname: greeting\\ndescription: 向来宾说欢迎词、问好；只负责语言问候。\\n---\\n\\n# greeting\\n\\n使用 say(text) 向来宾问好。text 为不超过 100 字的欢迎词。可以自行组织简短欢迎词，不要追问无关信息。这里只执行 Mock，不输出真实语音。\\n\", \"actions\": {\"say\": {\"parameters\": {\"text\": {\"type\": \"string\"}}, \"resources\": [\"speaker\"]}}}]"
+        },
+        {
+          "role": "user",
+          "content": "跟门口的客人挥挥手。"
+        }
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "reply": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "enum": [
+                        "t1",
+                        "t2",
+                        "t3",
+                        "t4",
+                        "t5",
+                        "t6",
+                        "t7",
+                        "t8"
+                      ]
+                    },
+                    "skill": {
+                      "type": "string",
+                      "enum": [
+                        "dance"
+                      ]
+                    },
+                    "action": {
+                      "type": "string",
+                      "enum": [
+                        "perform"
+                      ]
+                    },
+                    "args": {
+                      "type": "object",
+                      "properties": {
+                        "seconds": {
+                          "type": "integer",
+                          "enum": [
+                            1,
+                            2,
+                            3
+                          ],
+                          "default": 2
+                        }
+                      },
+                      "required": [
+                        "seconds"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "after": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "t1",
+                          "t2",
+                          "t3",
+                          "t4",
+                          "t5",
+                          "t6",
+                          "t7",
+                          "t8"
+                        ]
+                      },
+                      "maxItems": 7
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "skill",
+                    "action",
+                    "args",
+                    "after"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "enum": [
+                        "t1",
+                        "t2",
+                        "t3",
+                        "t4",
+                        "t5",
+                        "t6",
+                        "t7",
+                        "t8"
+                      ]
+                    },
+                    "skill": {
+                      "type": "string",
+                      "enum": [
+                        "gesture"
+                      ]
+                    },
+                    "action": {
+                      "type": "string",
+                      "enum": [
+                        "perform"
+                      ]
+                    },
+                    "args": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "wave",
+                            "heart"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "name"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "after": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "t1",
+                          "t2",
+                          "t3",
+                          "t4",
+                          "t5",
+                          "t6",
+                          "t7",
+                          "t8"
+                        ]
+                      },
+                      "maxItems": 7
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "skill",
+                    "action",
+                    "args",
+                    "after"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "enum": [
+                        "t1",
+                        "t2",
+                        "t3",
+                        "t4",
+                        "t5",
+                        "t6",
+                        "t7",
+                        "t8"
+                      ]
+                    },
+                    "skill": {
+                      "type": "string",
+                      "enum": [
+                        "greeting"
+                      ]
+                    },
+                    "action": {
+                      "type": "string",
+                      "enum": [
+                        "say"
+                      ]
+                    },
+                    "args": {
+                      "type": "object",
+                      "properties": {
+                        "text": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "text"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "after": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "t1",
+                          "t2",
+                          "t3",
+                          "t4",
+                          "t5",
+                          "t6",
+                          "t7",
+                          "t8"
+                        ]
+                      },
+                      "maxItems": 7
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "skill",
+                    "action",
+                    "args",
+                    "after"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "maxItems": 8
+          }
+        },
+        "required": [
+          "reply",
+          "tasks"
+        ],
+        "additionalProperties": false
+      },
+      "kind": "plan",
+      "plan": {
+        "tasks": [
+          {
+            "id": "t1",
+            "skill": "gesture",
+            "action": "perform",
+            "args": {
+              "name": "wave"
+            },
+            "after": []
+          }
+        ],
+        "reply": "已为您安排机器人向门口的客人挥手。"
+      }
+    }
+  ]
+}

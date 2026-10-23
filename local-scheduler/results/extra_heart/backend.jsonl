@@ -1,0 +1,3 @@
+{"t": 2716772.747673038, "action": "gesture.heart", "args": {"name": "heart"}, "state": "start"}
+{"t": 2716773.012461008, "action": "gesture.heart", "args": {"name": "heart"}, "state": "success"}
+{"t": 2716773.012528287, "action": "gesture.heart", "args": {"name": "heart"}, "state": "released"}

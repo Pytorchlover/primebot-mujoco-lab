@@ -1,0 +1,6 @@
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:00<00:01,  1.10it/s]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:01<00:00,  1.44it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:01<00:00,  2.04it/s]
+extra_capabilities complete 5.58 您想让我执行哪个技能呢？ None
+extra_no_action complete 4.96 您是想了解跳舞技能的具体细节，还是有其他需求？ None
+extra_heart complete 9.11 gesture.perform：模拟完成。 None
+extra_order complete 11.24 gesture.perform：模拟完成；gesture.perform：模拟完成。 None
+4 additional wording checks passed

@@ -1,0 +1,19 @@
+{
+  "package_name": "greeting",
+  "version": "0.1.0",
+  "primebuddy": {
+    "entrypoint": "src/actions.py",
+    "actions": {
+      "say": {
+        "parameters": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "resources": [
+          "speaker"
+        ]
+      }
+    }
+  }
+}

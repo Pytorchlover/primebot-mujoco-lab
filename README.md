@@ -69,3 +69,7 @@ MUJOCO_GL=egl .venv/bin/python code/collect_multiview.py
 ## 启元 Skill 本地视觉接入
 
 新增 [vision-skill](vision-skill/)：在 RTX 5070 Ti 上实际运行 OWL-ViT，接入 carry-clothes 的洗衣机搜索阶段，包含遮挡反例、六组 Mock 分支测试、独立的异步推理与观测过期实验。代码、图片授权和复现步骤见该目录。
+
+## 本地技能调度实战
+
+[Qwen3-4B + PrimeBuddy：意图判断、计划校验与 Mock 执行](local-scheduler/)；包含失败、取消与离线回放。

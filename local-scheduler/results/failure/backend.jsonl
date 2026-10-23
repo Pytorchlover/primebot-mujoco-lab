@@ -1,0 +1,3 @@
+{"t": 2716712.886361585, "action": "gesture.wave", "args": {"name": "wave"}, "state": "start"}
+{"t": 2716712.886403236, "action": "gesture.wave", "args": {"name": "wave"}, "state": "failed", "reason": "MOCK_ACTUATOR_BUSY"}
+{"t": 2716712.88641115, "action": "gesture.wave", "args": {"name": "wave"}, "state": "released"}

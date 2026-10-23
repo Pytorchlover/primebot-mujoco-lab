@@ -1,0 +1,3 @@
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:00<00:01,  1.12it/s]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:01<00:00,  1.46it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:01<00:00,  2.08it/s]
+wave error 4.59  {'type': 'ValueError', 'message': '未知平台工具'}
+/home/wjzh5070ti/primebot-local-scheduler/results/latest.json

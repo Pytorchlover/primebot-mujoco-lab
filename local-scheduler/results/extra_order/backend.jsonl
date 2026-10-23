@@ -1,0 +1,6 @@
+{"t": 2716783.551036313, "action": "gesture.wave", "args": {"name": "wave"}, "state": "start"}
+{"t": 2716783.819339004, "action": "gesture.wave", "args": {"name": "wave"}, "state": "success"}
+{"t": 2716783.819394057, "action": "gesture.wave", "args": {"name": "wave"}, "state": "released"}
+{"t": 2716783.988516711, "action": "gesture.heart", "args": {"name": "heart"}, "state": "start"}
+{"t": 2716784.251374007, "action": "gesture.heart", "args": {"name": "heart"}, "state": "success"}
+{"t": 2716784.251452983, "action": "gesture.heart", "args": {"name": "heart"}, "state": "released"}

@@ -1,0 +1,25 @@
+{
+  "package_name": "dance",
+  "version": "0.1.0",
+  "primebuddy": {
+    "entrypoint": "src/actions.py",
+    "actions": {
+      "perform": {
+        "parameters": {
+          "seconds": {
+            "type": "integer",
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "default": 2
+          }
+        },
+        "resources": [
+          "robot.body"
+        ]
+      }
+    }
+  }
+}

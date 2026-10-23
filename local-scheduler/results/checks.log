@@ -1,0 +1,32 @@
+PASS wave: no runtime error
+PASS wave: correct action
+PASS wave: sequential execution
+PASS wave: mock released
+PASS welcome: no runtime error
+PASS welcome: exact order
+PASS welcome: sequential execution
+PASS welcome: sequential execution
+PASS welcome: sequential execution
+PASS welcome: mock released
+PASS heart: no runtime error
+PASS heart: exact order
+PASS heart: sequential execution
+PASS heart: sequential execution
+PASS heart: mock released
+PASS ambiguous: no runtime error
+PASS ambiguous: zero actions
+PASS ambiguous: mock released
+PASS unsupported: no runtime error
+PASS unsupported: zero actions
+PASS unsupported: mock released
+PASS failure: no runtime error
+PASS failure: no dance and no retry
+PASS failure: reported by backend
+PASS failure: sequential execution
+PASS failure: mock released
+PASS cancel: no runtime error
+PASS cancel: no following heart
+PASS cancel: interrupted and released
+PASS cancel: sequential execution
+PASS cancel: mock released
+PASS guard tests reject all three invalid plans
