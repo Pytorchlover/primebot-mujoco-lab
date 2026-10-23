@@ -1,0 +1,17 @@
+{
+  "samples": 80,
+  "views": 3,
+  "rgb_frames": 240,
+  "duration_s": 4.0,
+  "last_observation_s": 3.949999999999676,
+  "sync_max_skew_s": 0.0,
+  "action_replay_max_error_rad": 0.0,
+  "snapshot_render_max_pixel_error": 3,
+  "snapshot_render_mean_pixel_MAE": 0.0003881253215020576,
+  "snapshot_render_worst_frame_MAE": 0.08874421296296296,
+  "side_shift_ms": 50,
+  "shifted_rows": 79,
+  "detected_shifted_rows": 79,
+  "hidden_shift_mean_pixel_MAE": 0.14601126640881387,
+  "dropped_row_detected": true
+}

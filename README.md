@@ -41,3 +41,27 @@ MUJOCO_GL=egl .venv/bin/python code/validate.py
 回放验证使用相同模型和初始状态，误差为 0 仅代表本环境数值复现，不代表跨版本位级一致。图像为固定外部相机，不是 Q1 真机相机标定。
 
 如无 NVIDIA EGL 环境，可自行配置 Mesa OSMesa 后设置 `MUJOCO_GL=osmesa`；本文实测路径为 NVIDIA EGL。脚本渲染不需桌面会话，普通 MuJoCo 的 mj_step 在 CPU 上执行。
+
+## 多视角数据采集（新增独立教程）
+
+环境安装后运行：
+
+```bash
+MUJOCO_GL=egl .venv/bin/python code/collect_multiview.py
+```
+
+`multiview/` 是独立的数据采集实验，不使用上一实验的左肩正弦轨迹：
+
+- 三段动作：左臂伸展、右臂伸展、双臂抬起并转腰。
+- 每段 4 秒 / 80 个控制时刻，正面、侧面、俯视三路 480×360 RGB；总计 240 个时刻、720 张 PNG。
+- 同一时刻渲染完全部相机后才做物理积分；使用仿真时间，20 Hz 目标、1 kHz PD。
+- 相机外参、视场角、分辨率、关节顺序与单位见 `multiview/schema.json`。
+- 每段包含 `index.jsonl`、`trajectory.npz`、三路 PNG、拼接视频和 `validation.json`。
+- index 保存每张图片的源帧号、仿真时间与 SHA256；trajectory 包含 time/state/velocity/action/next_state/snapshot/initial_integration_state。
+- `action` 是绝对关节目标；instruction 只是脚本动作标签，不是模型输入。
+- 使用相同环境从初态回放 action，所有采样点关节误差为 0。快照重渲染另行报告 RGB 差异，不宣称像素完全相同。实测最大单通道差为 3/255。
+- 每段构造 79 条保留源时间的 side 错一帧索引，均检出；删除一行的连续性检查也通过。故障只注入索引副本，交付数据保持完整。
+
+双击 `multiview/viewer.html` 可查看本地数据，或在仓库根目录运行 `python3 -m http.server 8769` 后打开 `http://localhost:8769/multiview/viewer.html`。支持切换 episode、播放、滑动帧号、方向键逐帧查看；渲染图片依赖完整 `multiview/` 目录。
+
+这是采集与格式检查样例，模型使用固定骨盆、关闭机器人碰撞的测试台，保留重力；并非通用任务训练集。

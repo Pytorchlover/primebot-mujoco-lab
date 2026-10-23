@@ -1,0 +1,121 @@
+{
+  "joint_names": [
+    "left_hip_pitch_joint",
+    "left_hip_roll_joint",
+    "left_hip_yaw_joint",
+    "left_knee_joint",
+    "left_ankle_pitch_joint",
+    "left_ankle_roll_joint",
+    "right_hip_pitch_joint",
+    "right_hip_roll_joint",
+    "right_hip_yaw_joint",
+    "right_knee_joint",
+    "right_ankle_pitch_joint",
+    "right_ankle_roll_joint",
+    "waist_roll_joint",
+    "waist_yaw_joint",
+    "left_shoulder_pitch_joint",
+    "left_shoulder_roll_joint",
+    "left_shoulder_yaw_joint",
+    "left_elbow_joint",
+    "right_shoulder_pitch_joint",
+    "right_shoulder_roll_joint",
+    "right_shoulder_yaw_joint",
+    "right_elbow_joint"
+  ],
+  "units": "rad; rad/s",
+  "action": "absolute joint target held for 50 physics steps",
+  "timestamps": "simulation time before action, not wall clock",
+  "physics_dt_s": 0.001,
+  "control_dt_s": 0.05,
+  "cameras": {
+    "front": {
+      "world_position_m": [
+        1.5,
+        0.0,
+        1.0
+      ],
+      "camera_to_world_rotation": [
+        [
+          5.551115123125783e-17,
+          -0.22722961560641847,
+          0.9738412097417932
+        ],
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.9738412097417932,
+          0.22722961560641847
+        ]
+      ],
+      "fovy_deg": 45.0,
+      "width": 480,
+      "height": 360,
+      "axes": "MuJoCo/OpenGL: +X right, +Y up, looks along -Z"
+    },
+    "side": {
+      "world_position_m": [
+        0.0,
+        1.5,
+        1.0
+      ],
+      "camera_to_world_rotation": [
+        [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.22722961560641847,
+          0.9738412097417932
+        ],
+        [
+          0.0,
+          0.9738412097417932,
+          0.22722961560641847
+        ]
+      ],
+      "fovy_deg": 45.0,
+      "width": 480,
+      "height": 360,
+      "axes": "MuJoCo/OpenGL: +X right, +Y up, looks along -Z"
+    },
+    "overhead": {
+      "world_position_m": [
+        0.0,
+        0.0,
+        2.0
+      ],
+      "camera_to_world_rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "fovy_deg": 45.0,
+      "width": 480,
+      "height": 360,
+      "axes": "MuJoCo/OpenGL: +X right, +Y up, looks along -Z"
+    }
+  },
+  "state_spec": "mjSTATE_INTEGRATION",
+  "mujoco": "3.17.0",
+  "base": "pelvis fixed at z=0.55m; robot collisions disabled; gravity retained",
+  "policy": "three scripted motions; instruction is a task label, not language model input"
+}
