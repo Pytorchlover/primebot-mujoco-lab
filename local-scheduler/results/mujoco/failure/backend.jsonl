@@ -1,0 +1,3 @@
+{"t": 2780038.341031005, "action": "gesture.wave", "args": {"name": "wave"}, "state": "start", "backend": "mujoco", "sim_time": 0.0}
+{"t": 2780038.341093904, "action": "gesture.wave", "args": {"name": "wave"}, "state": "failed", "reason": "INJECTED_ACTUATOR_BUSY", "backend": "mujoco", "sim_time": 0.0}
+{"t": 2780038.354905452, "action": "gesture.wave", "args": {"name": "wave"}, "state": "released", "backend": "mujoco", "sim_time": 0.0}

@@ -1,0 +1,9 @@
+{"t": 2779993.177665671, "action": "greeting.say", "args": {"text": "欢迎光临！"}, "state": "start", "backend": "mujoco", "sim_time": 0.0}
+{"t": 2779993.977735448, "action": "greeting.say", "args": {"text": "欢迎光临！"}, "state": "success", "backend": "mujoco", "sim_time": 0.8000000000000006, "physics_steps": 800}
+{"t": 2779994.075290505, "action": "greeting.say", "args": {"text": "欢迎光临！"}, "state": "released", "backend": "mujoco", "sim_time": 0.8000000000000006}
+{"t": 2779995.303182593, "action": "gesture.wave", "args": {"name": "wave"}, "state": "start", "backend": "mujoco", "sim_time": 0.8000000000000006}
+{"t": 2779997.70325912, "action": "gesture.wave", "args": {"name": "wave"}, "state": "success", "backend": "mujoco", "sim_time": 3.1999999999997586, "physics_steps": 2400}
+{"t": 2779997.779377015, "action": "gesture.wave", "args": {"name": "wave"}, "state": "released", "backend": "mujoco", "sim_time": 3.1999999999997586}
+{"t": 2779998.992133161, "action": "dance.perform", "args": {"seconds": 1}, "state": "start", "backend": "mujoco", "sim_time": 3.1999999999997586}
+{"t": 2779999.992223977, "action": "dance.perform", "args": {"seconds": 1}, "state": "success", "backend": "mujoco", "sim_time": 4.199999999999737, "physics_steps": 1000}
+{"t": 2780000.068530323, "action": "dance.perform", "args": {"seconds": 1}, "state": "released", "backend": "mujoco", "sim_time": 4.199999999999737}

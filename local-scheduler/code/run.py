@@ -23,7 +23,12 @@ def read_events(path):
 
 
 def run_case(client, case):
-    folder = ROOT / "results" / case["id"]
+    folder = (
+        ROOT
+        / "results"
+        / ("mujoco" if case.get("backend") == "mujoco" else "")
+        / case["id"]
+    )
     folder.mkdir(parents=True, exist_ok=True)
     log = folder / "backend.jsonl"
     log.unlink(missing_ok=True)
@@ -31,9 +36,18 @@ def run_case(client, case):
         runtime=ROOT / ".runtime" / case["id"],
         simulate=True,
         skill_configs={
-            "demo": {"events_path": str(log), "fail_action": case.get("fail_action")}
+            "demo": {
+                "events_path": str(log),
+                "fail_action": case.get("fail_action"),
+                "backend": case.get("backend", "mock"),
+                "sim_dir": str(folder / "simulation"),
+                "model_xml": str(ROOT / "sources/q1-urdf/xml/q1_v3_mc.xml"),
+            }
         },
     )
+    if case.get("backend") == "mujoco":
+        state = folder / "simulation/state.npz"
+        state.unlink(missing_ok=True)
     registry = Registry(ROOT / "skills")
     start = time.monotonic()
     call_start = len(client.calls)
@@ -115,7 +129,7 @@ def run_case(client, case):
         error = {"type": type(exc).__name__, "message": str(exc)}
         if cancel_sent:
             outcome = "cancelled"
-            final = "已处理取消请求，当前 Mock 任务已退出，后续任务未启动。"
+            final = "已处理取消请求，当前仿真任务已退出，后续任务未启动。"
         else:
             outcome = "error"
     finally:
@@ -173,6 +187,7 @@ def main():
     p.add_argument("--text")
     p.add_argument("--suite", action="store_true")
     p.add_argument("--case", choices=[c["id"] for c in CASES])
+    p.add_argument("--backend", choices=["mock", "mujoco"], default="mock")
     a = p.parse_args()
     if not (a.text or a.suite or a.case):
         p.error("Use --text, --suite, or --case")
@@ -187,7 +202,7 @@ def main():
             else [{"id": "interactive", "text": a.text}]
         )
     )
-    results = [run_case(client, c) for c in cases]
+    results = [run_case(client, {**c, "backend": a.backend}) for c in cases]
     report = {
         "cases": results,
         "guard_tests": guard_tests(),
@@ -207,7 +222,12 @@ def main():
         "peak_allocated_mib": torch.cuda.max_memory_allocated() / 2**20,
         "peak_reserved_mib": torch.cuda.max_memory_reserved() / 2**20,
     }
-    out = ROOT / "results" / ("suite.json" if a.suite else "latest.json")
+    out = (
+        ROOT
+        / "results"
+        / ("mujoco" if a.backend == "mujoco" else "")
+        / ("suite.json" if a.suite else "latest.json")
+    )
     out.write_text(json.dumps(report, ensure_ascii=False, indent=2))
     print(out, flush=True)
 

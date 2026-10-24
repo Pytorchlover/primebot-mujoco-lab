@@ -1,0 +1,59 @@
+{
+  "id": "unsupported",
+  "text": "去厨房给客人倒杯水。",
+  "backend": "mujoco",
+  "outcome": "complete",
+  "final": "目前不支持倒水操作，请您提出其他可执行的任务。",
+  "error": null,
+  "cancel_sent": false,
+  "elapsed_s": 4.863062175922096,
+  "batches": [],
+  "engine_events": [],
+  "announcements": [],
+  "backend_events": [],
+  "model_calls": [
+    {
+      "input_tokens": 271,
+      "output_tokens": 153,
+      "generation_s": 2.805887850932777,
+      "raw": "<think>\n好的，我需要分析用户的请求“去厨房给客人倒杯水”是否属于已安装动作中的一个。首先，查看已安装的技能：dance、gesture、greeting。用户的要求是去厨房倒水，这涉及到移动到厨房和执行倒水的动作。但已安装的技能中没有与移动或倒水相关的动作。用户可能希望机器人执行倒水，但根据提供的技能列表，没有支持这个动作的技能。因此，用户的要求属于unsupported，因为目录外的能力无法执行。需要回复说明不支持，并且不追问细节。\n</think>\n\n{\n  \"decision\": \"unsupported\",\n  \"reply\": \"目前不支持倒水操作，请您提出其他可执行的任务。\"\n}",
+      "messages": [
+        {
+          "role": "system",
+          "content": "判断用户是否明确要求机器人执行已安装动作。只分类，不安排任务。\nexecute：明确要求执行，且动作种类能从原话确定，reply留空。\nclarify：动作种类不明确，或者只是询问能力而未要求执行。reply简短追问，不能自行选择动作。\nunsupported：明确要求了目录外能力。reply说明目前不支持，不追问该能力的执行细节。\n多个动作组成的明确命令也属于execute；不要把明确的命令改成确认问题。只有原话缺少动作种类时才clarify。\n根据原话判断，不要因为目录里存在技能就替用户挑一个。输出严格JSON，包含decision和reply。已安装技能：[{\"name\": \"dance\", \"description\": \"机器人跳一小段舞；持续时间可选 1、2 或 3 秒。\", \"location\": \"SKILL.md\"}, {\"name\": \"gesture\", \"description\": \"机器人挥手或比心；不包含跳舞。\", \"location\": \"SKILL.md\"}, {\"name\": \"greeting\", \"description\": \"向来宾说欢迎词、问好；只负责语言问候。\", \"location\": \"SKILL.md\"}]"
+        },
+        {
+          "role": "user",
+          "content": "去厨房给客人倒杯水。"
+        }
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "decision": {
+            "type": "string",
+            "enum": [
+              "execute",
+              "clarify",
+              "unsupported"
+            ]
+          },
+          "reply": {
+            "type": "string",
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "decision",
+          "reply"
+        ],
+        "additionalProperties": false
+      },
+      "kind": "intent",
+      "plan": {
+        "decision": "unsupported",
+        "reply": "目前不支持倒水操作，请您提出其他可执行的任务。"
+      }
+    }
+  ]
+}

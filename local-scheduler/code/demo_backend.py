@@ -22,6 +22,9 @@ def run_action(context, action, args, duration):
 
     if not context.simulate:
         raise RuntimeError("This package supports Mock only")
+    if cfg.get("backend") == "mujoco":
+        from mujoco_backend import run_simulation
+        return run_simulation(context, action, args, emit)
     emit("start")
     try:
         if cfg.get("fail_action") == action:

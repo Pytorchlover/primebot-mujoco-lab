@@ -1,0 +1,51 @@
+PASS wave expected order
+PASS wave valid outcome
+PASS wave actual sim clock
+PASS wave stepped
+PASS wave finite state
+PASS wave visible joint motion
+PASS wave released
+PASS welcome expected order
+PASS welcome valid outcome
+PASS welcome actual sim clock
+PASS welcome stepped
+PASS welcome finite state
+PASS welcome state continuity
+PASS welcome actual sim clock
+PASS welcome stepped
+PASS welcome finite state
+PASS welcome visible joint motion
+PASS welcome state continuity
+PASS welcome actual sim clock
+PASS welcome stepped
+PASS welcome finite state
+PASS welcome visible joint motion
+PASS welcome released
+PASS heart expected order
+PASS heart valid outcome
+PASS heart actual sim clock
+PASS heart stepped
+PASS heart finite state
+PASS heart visible joint motion
+PASS heart state continuity
+PASS heart actual sim clock
+PASS heart stepped
+PASS heart finite state
+PASS heart visible joint motion
+PASS heart released
+PASS ambiguous expected order
+PASS ambiguous valid outcome
+PASS ambiguous released
+PASS unsupported expected order
+PASS unsupported valid outcome
+PASS unsupported released
+PASS failure expected order
+PASS failure valid outcome
+PASS failure actual sim clock
+PASS failure skips dance
+PASS failure released
+PASS cancel expected order
+PASS cancel valid outcome
+PASS cancel actual sim clock
+PASS cancel stops before 3 seconds
+PASS cancel released

@@ -72,4 +72,4 @@ MUJOCO_GL=egl .venv/bin/python code/collect_multiview.py
 
 ## 本地技能调度实战
 
-[Qwen3-4B + PrimeBuddy：意图判断、计划校验与 Mock 执行](local-scheduler/)；包含失败、取消与离线回放。
+[Qwen3-4B + PrimeBuddy：意图判断、计划校验与 Mock 执行](local-scheduler/)；包含 MuJoCo Q1 动作验证、失败与取消测试，以及离线回放。

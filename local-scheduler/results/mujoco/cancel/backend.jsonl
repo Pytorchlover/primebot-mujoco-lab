@@ -1,0 +1,3 @@
+{"t": 2780049.469752933, "action": "dance.perform", "args": {"seconds": 3}, "state": "start", "backend": "mujoco", "sim_time": 0.0}
+{"t": 2780049.829826622, "action": "dance.perform", "args": {"seconds": 3}, "state": "interrupted", "backend": "mujoco", "sim_time": 0.36000000000000026, "physics_steps": 360}
+{"t": 2780049.875444473, "action": "dance.perform", "args": {"seconds": 3}, "state": "released", "backend": "mujoco", "sim_time": 0.36000000000000026}

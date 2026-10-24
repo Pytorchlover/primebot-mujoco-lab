@@ -1,0 +1,13 @@
+{
+  "action": "gesture.wave",
+  "status": "success",
+  "physics_steps": 2400,
+  "start_sim_s": 0.8000000000000006,
+  "end_sim_s": 3.1999999999997586,
+  "frames": 60,
+  "timestep": 0.001,
+  "base": "fixed pelvis, gravity enabled, robot collisions disabled",
+  "control": "35*(q_ref-q)-1.2*qvel+qfrc_bias, clipped to actuator limits",
+  "max_joint_excursion_deg": 82.73181907933115,
+  "tracking_rmse_deg": 1.5142518997032584
+}

@@ -4,3 +4,5 @@ upstream/
 .runtime/
 __pycache__/
 *.pyc
+
+sources/

@@ -1,0 +1,13 @@
+{
+  "action": "greeting.say",
+  "status": "success",
+  "physics_steps": 800,
+  "start_sim_s": 0.0,
+  "end_sim_s": 0.8000000000000006,
+  "frames": 20,
+  "timestep": 0.001,
+  "base": "fixed pelvis, gravity enabled, robot collisions disabled",
+  "control": "35*(q_ref-q)-1.2*qvel+qfrc_bias, clipped to actuator limits",
+  "max_joint_excursion_deg": 0.0,
+  "tracking_rmse_deg": 0.0
+}

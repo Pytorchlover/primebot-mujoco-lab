@@ -1,0 +1,6 @@
+{"t": 2780011.565278353, "action": "gesture.heart", "args": {"name": "heart"}, "state": "start", "backend": "mujoco", "sim_time": 0.0}
+{"t": 2780013.965365472, "action": "gesture.heart", "args": {"name": "heart"}, "state": "success", "backend": "mujoco", "sim_time": 2.3999999999998467, "physics_steps": 2400}
+{"t": 2780014.070522398, "action": "gesture.heart", "args": {"name": "heart"}, "state": "released", "backend": "mujoco", "sim_time": 2.3999999999998467}
+{"t": 2780015.307384091, "action": "dance.perform", "args": {"seconds": 2}, "state": "start", "backend": "mujoco", "sim_time": 2.3999999999998467}
+{"t": 2780017.307465281, "action": "dance.perform", "args": {"seconds": 2}, "state": "success", "backend": "mujoco", "sim_time": 4.399999999999804, "physics_steps": 2000}
+{"t": 2780017.426666896, "action": "dance.perform", "args": {"seconds": 2}, "state": "released", "backend": "mujoco", "sim_time": 4.399999999999804}

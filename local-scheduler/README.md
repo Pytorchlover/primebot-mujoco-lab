@@ -1,6 +1,6 @@
 # 本地技能调度：Qwen3-4B + PrimeBuddy
 
-复用[社区项目 PrimeBuddy](https://github.com/huang-kai/primebuddy) 的 Registry 和 engine，另写本地规划器。没有使用上游 planner，也没有改动上游源码。模型在 GPU 上真实推理，三个自定义技能在受监督子进程中运行 Mock 函数，不连接机器人。
+复用[社区项目 PrimeBuddy](https://github.com/huang-kai/primebuddy) 的 Registry 和 engine，另写本地规划器。没有使用上游 planner，也没有改动上游源码。模型在 GPU 上真实推理，三个自定义技能在受监督子进程中运行。支持原 Mock 后端和新增 MuJoCo Q1 后端，不连接机器人。
 
 ## 运行
 
@@ -40,3 +40,26 @@ bash code/setup.sh
 七个主案例均以已加载模型开始计时。挥手 9.16 秒、欢迎组合 13.14 秒；PyTorch 峰值 allocated 7822.4 MiB。少量工程案例不构成通用准确率评估。
 
 本目录代码采用 MIT；上游 PrimeBuddy、Qwen 和依赖遵循各自许可。未包含模型权重或上游源码。
+
+## MuJoCo Q1 动作验证
+
+先完成上面的 setup.sh，然后：
+
+```bash
+bash code/setup_sim.sh
+.venv/bin/python code/run.py --backend mujoco --suite
+.venv/bin/python code/check_sim.py
+.venv/bin/python code/make_sim_media.py
+# 或自定义一句话
+.venv/bin/python code/run.py --backend mujoco --text '先挥手，再跳两秒舞。'
+```
+
+Q1 官方模型来自 https://atomgit.com/primebot/q1-urdf ，固定 commit `562b764a18613d459140ed9b255fa30434e346ef`，使用 xml/q1_v3_mc.xml。模型与网格由安装脚本下载，不打包到本目录。
+
+场景移除骨盆自由关节、增加可见支架，保留重力，关闭机器人碰撞。22 个关节使用力矩限幅 PD 加偏置力补偿，1 kHz 物理步进、25 FPS 记录。没有自由站立或接触控制器。挥手为 2.4 秒左臂轨迹；舞蹈为腰部和双臂周期动作；比心仅为双臂内收，不含手指控制；问好只产生文字，不播放音频。
+
+results/mujoco/suite.json 保存本地模型到实际仿真的七个案例；51 项检查通过，覆盖真实步进、关节运动、连续状态、失败跳过和取消。各动作保存 trajectory.npz、metrics.json、motion.mp4，逐帧 PNG 可由 make_sim_media.py 重建。该脚本只从物理记录重渲染正面视角，不修改轨迹。原 Mock 记录独立保留。
+
+迎宾动作总仿真时长 4.2 秒（文字停留 0.8 + 挥手 2.4 + 舞蹈 1.0），本轮含模型推理和保存画面的墙钟时间 19.00 秒。取消案例在舞蹈启动后 0.3 秒发出信号，保存了 0.36 秒的仿真运动，后续比心未启动；这是终止仿真循环，不代表物理制动。视频 results/mujoco/welcome_sequence.mp4 按 25 FPS 播放仿真时间，不包含模型推理等待。
+
+图片中的正面视角由保存的实际状态重新渲染；首次物理运行使用侧后方相机，控制与关节记录不受相机影响。

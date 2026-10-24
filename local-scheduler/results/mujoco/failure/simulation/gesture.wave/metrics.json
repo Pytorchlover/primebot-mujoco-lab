@@ -1,0 +1,11 @@
+{
+  "action": "gesture.wave",
+  "status": "failed",
+  "physics_steps": 0,
+  "start_sim_s": 0.0,
+  "end_sim_s": 0.0,
+  "frames": 0,
+  "timestep": 0.001,
+  "base": "fixed pelvis, gravity enabled, robot collisions disabled",
+  "control": "35*(q_ref-q)-1.2*qvel+qfrc_bias, clipped to actuator limits"
+}

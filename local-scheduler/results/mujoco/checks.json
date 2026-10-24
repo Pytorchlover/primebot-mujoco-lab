@@ -1,0 +1,206 @@
+[
+  {
+    "check": "wave expected order",
+    "passed": true
+  },
+  {
+    "check": "wave valid outcome",
+    "passed": true
+  },
+  {
+    "check": "wave actual sim clock",
+    "passed": true
+  },
+  {
+    "check": "wave stepped",
+    "passed": true
+  },
+  {
+    "check": "wave finite state",
+    "passed": true
+  },
+  {
+    "check": "wave visible joint motion",
+    "passed": true
+  },
+  {
+    "check": "wave released",
+    "passed": true
+  },
+  {
+    "check": "welcome expected order",
+    "passed": true
+  },
+  {
+    "check": "welcome valid outcome",
+    "passed": true
+  },
+  {
+    "check": "welcome actual sim clock",
+    "passed": true
+  },
+  {
+    "check": "welcome stepped",
+    "passed": true
+  },
+  {
+    "check": "welcome finite state",
+    "passed": true
+  },
+  {
+    "check": "welcome state continuity",
+    "passed": true
+  },
+  {
+    "check": "welcome actual sim clock",
+    "passed": true
+  },
+  {
+    "check": "welcome stepped",
+    "passed": true
+  },
+  {
+    "check": "welcome finite state",
+    "passed": true
+  },
+  {
+    "check": "welcome visible joint motion",
+    "passed": true
+  },
+  {
+    "check": "welcome state continuity",
+    "passed": true
+  },
+  {
+    "check": "welcome actual sim clock",
+    "passed": true
+  },
+  {
+    "check": "welcome stepped",
+    "passed": true
+  },
+  {
+    "check": "welcome finite state",
+    "passed": true
+  },
+  {
+    "check": "welcome visible joint motion",
+    "passed": true
+  },
+  {
+    "check": "welcome released",
+    "passed": true
+  },
+  {
+    "check": "heart expected order",
+    "passed": true
+  },
+  {
+    "check": "heart valid outcome",
+    "passed": true
+  },
+  {
+    "check": "heart actual sim clock",
+    "passed": true
+  },
+  {
+    "check": "heart stepped",
+    "passed": true
+  },
+  {
+    "check": "heart finite state",
+    "passed": true
+  },
+  {
+    "check": "heart visible joint motion",
+    "passed": true
+  },
+  {
+    "check": "heart state continuity",
+    "passed": true
+  },
+  {
+    "check": "heart actual sim clock",
+    "passed": true
+  },
+  {
+    "check": "heart stepped",
+    "passed": true
+  },
+  {
+    "check": "heart finite state",
+    "passed": true
+  },
+  {
+    "check": "heart visible joint motion",
+    "passed": true
+  },
+  {
+    "check": "heart released",
+    "passed": true
+  },
+  {
+    "check": "ambiguous expected order",
+    "passed": true
+  },
+  {
+    "check": "ambiguous valid outcome",
+    "passed": true
+  },
+  {
+    "check": "ambiguous released",
+    "passed": true
+  },
+  {
+    "check": "unsupported expected order",
+    "passed": true
+  },
+  {
+    "check": "unsupported valid outcome",
+    "passed": true
+  },
+  {
+    "check": "unsupported released",
+    "passed": true
+  },
+  {
+    "check": "failure expected order",
+    "passed": true
+  },
+  {
+    "check": "failure valid outcome",
+    "passed": true
+  },
+  {
+    "check": "failure actual sim clock",
+    "passed": true
+  },
+  {
+    "check": "failure skips dance",
+    "passed": true
+  },
+  {
+    "check": "failure released",
+    "passed": true
+  },
+  {
+    "check": "cancel expected order",
+    "passed": true
+  },
+  {
+    "check": "cancel valid outcome",
+    "passed": true
+  },
+  {
+    "check": "cancel actual sim clock",
+    "passed": true
+  },
+  {
+    "check": "cancel stops before 3 seconds",
+    "passed": true
+  },
+  {
+    "check": "cancel released",
+    "passed": true
+  }
+]

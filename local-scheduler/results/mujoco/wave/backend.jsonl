@@ -1,0 +1,3 @@
+{"t": 2779978.565120878, "action": "gesture.wave", "args": {"name": "wave"}, "state": "start", "backend": "mujoco", "sim_time": 0.0}
+{"t": 2779980.96520662, "action": "gesture.wave", "args": {"name": "wave"}, "state": "success", "backend": "mujoco", "sim_time": 2.3999999999998467, "physics_steps": 2400}
+{"t": 2779981.061467732, "action": "gesture.wave", "args": {"name": "wave"}, "state": "released", "backend": "mujoco", "sim_time": 2.3999999999998467}
